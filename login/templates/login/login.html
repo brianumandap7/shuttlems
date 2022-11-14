@@ -1,0 +1,45 @@
+{% extends 'ticket/base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load static %}
+<style>
+	.google .googleimg {
+		height: 40px;
+	}
+	.form-group {
+		width: 350px;
+	}
+	.gb{
+		width: 67%;
+	}
+</style>
+
+<center>
+	<!-- <div class="card-header"><h3>LOGIN</h3></div> -->
+	<form method="POST" class = "loginform mt-4">
+		<a href="/">
+		<img src="{% static 'shuttle/feulogo.png' %}" width="180" height="180" >
+		</a>
+		<p style = "font-family:helvetica; color: #4F4F4F"><b>FEU - CAVITE</b></p>
+		<p style = "font-family:helvetica; color: #4F4F4F"><b>Shuttle Management System</b></p>
+				{% csrf_token %}
+				<fieldset class="form-group">
+				  {{ form|crispy }}
+				</fieldset>
+				<br>
+				<div class = "form-group">
+					<button class ="btn btn-primary form-control loginbtn" type = "submit">Login</button>
+				</div>
+
+				
+	</form>
+</center>
+<br>	
+
+<br>
+
+<div class="card-footer text-center py-3">
+	<div class="small"><a href="register.html">Need an account? Sign up!</a></div>
+</div>
+
+{% endblock content %}

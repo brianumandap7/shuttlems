@@ -1,0 +1,52 @@
+{% extends 'ticket/studentbase.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load static %}
+<style>
+.dashlogo {
+	width: 300px;
+	height: 300px;
+}
+.dashlogo1 {
+	width: 300px;
+	height: 300px;
+}
+
+.shuttle {
+    width: 500px;
+}
+
+
+.imgs {
+    width: auto;
+}
+</style>
+{% if request.user.is_superuser %}
+<script>
+		window.location.href = '/ticket/admindash';
+
+</script>
+{% endif %}
+
+{% for items in role %}
+	{% if items.role_id  == 8 %}
+	<script>
+		window.location.href = '/ticket/student_page';
+
+	</script>
+
+	{% elif items.role_id == 10 %}
+	<script>
+		window.location.href = '/ticket/fts_page';
+
+	</script>
+
+    {% elif items.role_id == 9 %}
+    <script>
+        window.location.href = '/ticket/employee_page';
+
+    </script>
+	{% endif %}
+{% endfor %}
+
+{% endblock content %}

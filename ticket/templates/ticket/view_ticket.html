@@ -1,0 +1,108 @@
+{% extends 'ticket/popupbase.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+<style>
+	.ap {
+		float: right;
+	}
+</style>
+<div class="container-fluid">
+	<center>
+	
+		<table class="table table-striped">
+			<thead class="thead-dark">
+				<th>Date of Travel</th>
+				<th>Time of Travel</th>
+				<th>Destination</th>
+				<th>Purpose</th>
+				<th>Status of Ticket</th>
+				<th>Participants</th>
+			</thead>
+			{% for items in ticket %}
+			<tr>
+				<td>
+					{{items.start_date}}
+				</td>
+				<td>
+					{{items.start_time}}
+				</td>
+				<td>
+					{{items.destination}}
+				</td>
+				<td>
+					{{items.description}}
+				</td>
+				<td>
+					{{items.ticket_status}}
+				</td>
+				<td>
+					{% for items in participants2 %}
+					{{items.participant_user}}<br>
+					{% endfor %}
+				</td>
+			</tr>
+			{% endfor %}
+			
+
+			
+		</table>
+		<!-- add part -->
+		<!-- Button trigger modal -->
+		{% for items in r %}
+		{% if items.role_id == 9 %}
+		<button type="button" class="btn btn-primary ap" data-toggle="modal" data-target="#exampleModal">
+		  Add Participant
+		</button>
+		{% endif %}
+
+		{% if items.role_id == 10 %}
+		<button type="button" class="btn btn-primary ap" data-toggle="modal" data-target="#exampleModal">
+		  Add Participant
+		</button>
+		{% endif %}
+		{% endfor %}
+
+		<!-- Modal -->
+		<form method="POST">
+		{% csrf_token %}
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+
+		      		 <select class="form-control" name="part">
+		      		 	{% for items in participants %}
+		      		 	<option value="{{items.id}}">{{items.username}}</option>
+		      		 	{% endfor %}
+		      		 </select>		   
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		        <input type="submit" name="submit" class="btn btn-success" value="Add Participant">
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		</form>
+		<!-- end of add -->
+		
+	
+	</center>
+</div>
+
+<script>
+                window.onunload = refreshParent;
+                function refreshParent() {
+                  window.opener.location.reload();
+                }
+                
+              </script>
+{% endblock content %}

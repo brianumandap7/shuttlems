@@ -1,0 +1,68 @@
+{% extends 'ticket/ftsbase.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load static %}
+<style>
+.disabled {
+  pointer-events: none;
+  cursor: default;
+}
+</style>
+<div class="container">
+	<center>
+	
+		<table class="table table-dark">
+			<thead>
+				<th>Date of Travel</th>
+				<th>Time of Travel</th>
+				<th>Purpose</th>
+				<th>Email</th>
+				<th>Filed by</th>
+				<th>Date of Filing</th>
+				<th>Status of Ticket</th>
+				<th>Action</th>
+			</thead>
+			{% for items in list %}
+			<tr>
+				<td>
+					{{items.start_date}}
+				</td>
+				<td>
+					{{items.start_time}}
+				</td>
+				<td>
+					{{items.description}}
+				</td>
+				<td>
+					{{items.email}}
+				</td>
+				<td>
+					{{items.user}}
+				</td>
+				<td>
+					{{items.date_filed}}
+				</td>
+				<td>
+					{{items.status}}
+				</td>
+				<td>
+					
+					{% if items.status_id == 2 %}
+					<a href="/fts/ftsu/{{items.ticket_id}}" class="btn btn-success">Approve</a>
+					<a href="/admin/ticket/tickets/{{items.ticket_id}}/change/" class="btn btn-success">Reject</a>
+					{% else %}
+					<a href="#" class="btn btn-warning disabled">Not Covered</a>
+					{% endif %}
+					
+				</td>
+			</tr>
+			{% endfor %}
+			
+
+			
+		</table>
+		
+	
+	</center>
+</div>
+{% endblock content %}

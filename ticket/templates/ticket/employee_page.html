@@ -1,0 +1,68 @@
+{% extends 'ticket/employeebase.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load static %}
+<style>
+  div .vt {
+    color: black;
+    text-decoration: none;
+  }
+
+  .idiv {
+    overflow: hidden;
+    width: 900px;
+    height: 350px;
+  }
+
+  .capt {
+    margin-top: -50px;
+  }
+
+  .content {
+    overflow: hidden;
+  }
+</style>
+<section class="content">
+      <div class="container-fluid">
+        {% for i in mtx %}
+            {% for items in part %}
+            {% if items.ticket.start_date|date:"Y-m-d" == today %}
+            <div class="alert alert-danger alert-dismissable" role = "alert"><strong>You have a travel today!</strong> Make sure to accomplish the Health Declaration Form before the trip. Thank you so much. &nbsp;&nbsp;
+
+              <a href = "#" onclick="window.open('/ticket/view_ticket/{{i.ticket_id}}','popupticket','width=950,height=600'); return false;" class="btn btn-light vt">View Trip Details</a>
+              &nbsp;&nbsp;&nbsp;
+
+            {% if items.hdf == 0 %}
+              <a href = "#" onclick="window.open('/ticket/hdf0/{{i.ticket_id}}','popupticket','width=950,height=600'); return false;" class="btn btn-light vt">Answer HDF</a> <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            </div>
+
+            {% else %}
+            <a class="btn btn-light vt"><strong>Done with HDF<br>
+              <small>(Click to QR)</small></strong></a><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+
+            {% endif %}
+            {% endif %}
+            {% endfor %}
+        {% endfor %}
+        </div>
+
+              <div class="container-fluid">
+                <div class="row">
+                  {% for items in gp %}
+                  <div class="col-lg-6 col-xs-12 col-md-6">
+                      <div class="idiv">
+                       
+                        <iframe src="{{items.gps_link}}" title="Shuttle Track" style="position: relative; top: -50px; width: 500px; height: 350px;"></iframe>
+                        
+                      </div>
+
+                      <h6 class="capt"><strong>{{items.shuttle_name.shuttle_name}} | {{items.shuttle_name.plate_number}} | {{items.shuttle_name.driver_name}}</strong></h6>
+                  </div>
+                  {% endfor %}
+                  
+                </div>
+              </div> 
+    
+</section>
+
+{% endblock content %}

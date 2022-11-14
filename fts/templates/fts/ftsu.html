@@ -1,0 +1,39 @@
+{% extends 'ticket/base2.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+<div class="container">
+<form method="POST">
+	{% csrf_token %}
+	<center>
+<table>
+		<tr>
+			<td>Assign Driver: </td>
+			<td>
+				<select class="form-control" name="gender">
+					<option value="">--</option>
+					{% for items in driv %}
+				    <option value="{{items.id}}">{{items.user}}</option>
+				    {% endfor %}
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Participants
+			</td>
+			<td>
+				<textarea cols="25" rows="5"></textarea>
+			</td>
+		</tr>
+		<tr>
+			<td><input type="submit" value="Assign and Approve" class="btn btn-success"></td>
+		</tr>
+
+</table>
+</center>
+</form>
+</div>
+
+{% endblock content %}

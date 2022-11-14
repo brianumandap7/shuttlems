@@ -1,0 +1,15 @@
+{% extends 'ticket/base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+<center>
+	<br>
+	<a href="/" class="mt-5 mb-5">
+	<img src="{% static 'shuttle/feulogo.png' %}" width="180" height="180" >
+	</a>
+
+	<h5 class="warning" style = "font-family:helvetica; color: #4F4F4F"><small><b>You've logged out from Shuttle Management System</b></small></h5>
+    	<a href = "/">Log-in to continue</a>      
+</center>
+{% endblock content %}

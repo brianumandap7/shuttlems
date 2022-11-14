@@ -1,0 +1,20 @@
+{% extends 'ticket/base2.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+<style>
+	
+	.qr {
+		width: 500px;
+		height: 500px;
+	}
+</style>
+<div class="container">
+	<h6>Welcome to FEU - Cavite, {{user}}!</h6>
+{% for items in lat %}
+	<img src="/media/{{items.qr_code}}" class="img-responsive qr" alt="qr">
+{% endfor %}
+</div>
+
+{% endblock content %}

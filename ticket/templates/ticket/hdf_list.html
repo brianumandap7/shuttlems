@@ -1,0 +1,41 @@
+{% extends 'ticket/popupbase.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load static %}
+<section>
+    <div class="container">
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Participant</th>
+              <th scope="col">Trip Ticket</th>
+              <th scope="col">Health Dec Status</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for items in dec %}
+            <tr>
+              <td>{{items.user}}</td>
+              <td>{{items.ticket.description}}</td>
+              <td>{% if items.a2 == "Not cleared" or items.a3 == "Not cleared" %}
+              Not Cleared
+              {% else %} 
+              Cleared
+              {% endif %}  
+              </td>
+              <td><a href="/ticket/view_ticket1/{{items.ticket_id}}" class="btn btn-info">View Ticket</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</section>
+<script>
+                window.onunload = refreshParent;
+                function refreshParent() {
+                  window.opener.location.reload();
+                }
+                
+              </script>
+
+{% endblock content %}

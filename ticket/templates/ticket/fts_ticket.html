@@ -1,0 +1,80 @@
+{% extends 'ticket/popupbase.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load static %}
+<style>
+	.bt-c {
+		width: 100px;
+	}
+</style>
+<div class="container-fluid">
+	<center>
+	
+		<table class="table table-striped">
+			<thead class="thead-dark">
+				<th>Date of Travel</th>
+				<th>Time of Travel</th>
+				<th>Purpose</th>
+				<th>File By</th>
+				<th>Status</th>
+				<th>Actions</th>
+			</thead>
+			{% for items in ticket %}
+			<tr>
+				<td>
+					{{items.start_date}}
+				</td>
+				<td>
+					{{items.start_time}}
+				</td>
+				<td>
+					{{items.description}}
+				</td>
+				<td>
+					{{items.user}}
+				</td>
+				<td>
+					{{items.ticket_status}}
+				</td>
+				
+				<td>
+					<a class="btn btn-primary bt-c" onclick="window.open('/ticket/view_ticket/{{items.ticket_id}}','popupticket','width=950,height=600'); return false;">
+                             View
+                          </a>
+				{% if items.ticket_status_id == 2 %}
+					
+						<a href="/media/{{items.qr_code}}" class="btn btn-success bt-c">QR Code</a>
+					
+					
+				{% endif %}
+
+				{% if items.ticket_status_id == 1 %}
+					
+						<a href="/ticket/a/{{items.ticket_id}}" class="btn btn-warning bt-c">Approve</a><br>
+						<a href="/ticket/d/{{items.ticket_id}}" class="btn btn-danger bt-c">Disapprove</a>
+					
+					<!-- Button trigger modal -->
+					
+					<!-- Modal -->
+					
+				{% endif %}
+				</td>
+			</tr>
+			{% endfor %}
+			
+
+			
+		</table>
+		
+	
+	</center>
+</div>
+
+<script>
+                window.onunload = refreshParent;
+                function refreshParent() {
+                  window.opener.location.reload();
+                }
+                
+              </script>
+{% endblock content %}

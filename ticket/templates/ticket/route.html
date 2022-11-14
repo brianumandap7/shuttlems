@@ -1,0 +1,46 @@
+{% extends "ticket/popupbase.html" %}
+{% load static %}
+{% block content %} 
+<style>
+.idiv {
+	overflow: hidden;
+	width: 900px;
+	height: 350px;
+}
+</style>
+<section>
+	<div class="container-fluid">
+		
+		<center>
+			<div class="idiv">
+				{% for items in ss %}
+				<iframe src="{{items.gps_link}}" title="Shuttle Track" style="position: relative; top: -50px; width: 900px; height: 350px;"></iframe>
+				{% endfor %}
+			</div>
+			
+
+			{% for items in ss %}
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Shuttle Name</th>
+						<th>Plate Number</th>
+						<th>Driver Name</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr>
+						<td>{{items.shuttle_name}}</td>
+						<td>{{items.plate_number}}</td>
+						<td>{{items.driver_name}}</td>
+					</tr>
+				</tbody>
+				
+			</table>
+			{% endfor %}
+		</center>
+		
+	</div>
+</section>
+{% endblock content %}

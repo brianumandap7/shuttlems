@@ -1,0 +1,49 @@
+{% extends 'ticket/ftsbase.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load static %}
+<style>
+.dashlogo {
+	width: 300px;
+	height: 300px;
+}
+.dashlogo1 {
+	width: 300px;
+	height: 300px;
+}
+
+
+</style>
+
+
+
+<div class="file">
+	<div class="row">
+
+
+
+		<div class="col-lg-4 col-md-4 col-xs-4">
+			<center>
+				<a href = "/fts">
+					<img src="{% static 'shuttle/record.png' %}" class="img-reponsive dashlogo1">
+					
+				</a>
+				<h6>Track Submitted Tickets</h6>
+			</center>
+		</div>
+
+
+		<div class="col-lg-4 col-md-4 col-xs-4">
+			<center>
+				<a href = "/fts/add_driver">
+					<img src="{% static 'shuttle/bus.png' %}" class="img-reponsive dashlogo1">
+					
+				</a>
+				<h6>Driver Tracking</h6>
+			</center>
+		</div>
+	</div>
+
+</div>
+
+{% endblock content %}

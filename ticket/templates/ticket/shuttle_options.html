@@ -1,0 +1,39 @@
+{% extends 'ticket/popupbase.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+<section>
+	<div class="container-fluid">
+		<table class="table table-stripped">
+			<thead class="thead-dark">
+				<tr>
+					<th>Shuttle Name</th>
+					<th>Plate Number</th>
+					<th>Driver</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for items in ss %}
+				<tr>
+					<td>
+						{{items.shuttle_name.shuttle_name}}
+					</td>
+					<td>
+						{{items.shuttle_name.plate_number}}
+					</td>
+					<td>
+						{{items.shuttle_name.driver_name}}
+					</td>
+					<td>
+						<a href="/ticket/route/{{items.shuttle_service_id}}" class="btn btn-success">Track</a>
+					</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		
+	</div>
+</section>
+{% endblock content %}

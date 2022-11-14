@@ -1,0 +1,96 @@
+{% extends 'ticket/popupbase.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+<section>
+	<div class="container-fluid">
+		<table class="table table-stripped">
+			<thead class="thead-dark">
+				<tr>
+					<th>Shuttle Name</th>
+					<th>Plate Number</th>
+					<th>Driver</th>
+					<th>GPS Link</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for items in ss %}
+				<tr>
+					<td>
+						{{items.shuttle_name.shuttle_name}}
+					</td>
+					<td>
+						{{items.shuttle_name.plate_number}}
+					</td>
+					<td>
+						{{items.shuttle_name.driver_name}}
+					</td>
+					<td>
+						<a href="/ticket/route/{{items.shuttle_service_id}}">{{items.gps_link}}</a>
+					</td>
+					<td>
+						<a href="/ticket/edit_shuttle/{{items.shuttle_service_id}}" class="btn btn-warning">Edit</a>
+						<a href="/ticket/delete_shuttle/{{items.shuttle_service_id}}" class="btn btn-danger">Delete</a>
+					</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		<button type="button" class="btn btn-primary ap" data-toggle="modal" data-target="#exampleModal">
+		  Manage Shuttle
+		</button>
+
+		<!-- Modal -->
+		<form method="POST">
+		{% csrf_token %}
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">Add Shuttle Service</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+
+		      		<table class="table">
+		      			<tr>
+		      				<td>
+		      					Select Shuttle
+		      				</td>
+		      				<td>
+		      					<select name = "sname" class="form-control">
+		      						<option>--</option>
+		      						{% for items in slist %}
+		      							<option value="{{items.shuttle_service_list_id}}">{{items.shuttle_name}} / {{items.plate_number}} / {{items.driver_name}}</option>
+		      						{% endfor %}
+		      					</select>
+		      				</td>
+		      			</tr>
+
+		      			<tr>
+		      				<td>
+		      					GPS Link
+		      				</td>
+		      				<td>
+		      					<input type="text" name="glink" class="form-control" required>
+		      				</td>
+		      			</tr>
+		      		</table>	   
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		        <input type="submit" name="submit" class="btn btn-primary" value="Add Shuttle">
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		</form>
+		<!-- end of add -->
+	</div>
+</section>
+{% endblock content %}

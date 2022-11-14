@@ -1,0 +1,28 @@
+{% extends 'ticket/studentbase.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load static %}
+<style>
+.shbtn {
+	width: 160px;
+}
+.dashlogo1 {
+	width: 100px;
+}
+</style>
+<div class="container">
+	<div class="row">
+	{% for items in sh %}
+	
+		<div class="col-lg-4 col-md-4 col-xs-4">
+			<img src="{% static 'shuttle/bus.png' %}" class="img-reponsive dashlogo1">
+			<h6>Route: {{items.destination}}</h6>
+			<a href="/ticket/shuttle_track/{{items.station_id}}" class="btn btn-success shbtn">{{items.shuttle}}</a><br>
+		</div>
+	
+	{% endfor %}
+	</div>
+
+</div>
+
+{% endblock content %}

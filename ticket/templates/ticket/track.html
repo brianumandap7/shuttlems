@@ -1,0 +1,38 @@
+{% extends 'ticket/base2.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load static %}
+<div class="container-fluid">
+<div class="row">
+	<div class = "col-lg-6 col-md-6 col-xs-6">
+		<center>
+		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3867.2770764246884!2d120.95874881478497!3d14.237052390034895!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd7ef46fab8bbf%3A0x7afedd6cee471d1!2sFEU%20Cavite%20College%20Building!5e0!3m2!1sen!2sph!4v1638152465776!5m2!1sen!2sph" width="450" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+		</center>
+	</div>
+
+	<div class="col-lg-6 col-md-6 col-xs-6">
+		<table>
+			<tr>
+				<td>
+					Shuttle number: 
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					Driver:
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					Current Location:
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+</div>
+
+{% endblock content %}
+

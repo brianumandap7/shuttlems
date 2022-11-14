@@ -1,0 +1,70 @@
+{% extends 'ticket/popupbase.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+<section>
+	<div class="container-fluid">
+		<table class="table table-stripped">
+		<!-- Modal -->
+		<form method="POST">
+		{% csrf_token %}
+
+		      		<table class="table">
+		      			{% for items in ss %}
+		      			<tr>
+		      				<td>
+		      					Shuttle Name
+		      				</td>
+		      				<td>
+		      					<input type="text" name="sname" class="form-control" value = "{{items.shuttle_name.shuttle_name}}" disabled>
+		      				</td>
+		      			</tr>
+		      			<tr>
+		      				<td>
+		      					Plate Number
+		      				</td>
+		      				<td>
+		      					<input type="text" name="pnumber" class="form-control" value = "{{items.shuttle_name.plate_number}}" disabled>
+		      				</td>
+		      			</tr>
+
+		      			<tr>
+		      				<td>
+		      					Driver Name
+		      				</td>
+		      				<td>
+		      					<input type="text" name="dname" class="form-control" value = "{{items.shuttle_name.driver_name}}" disabled>
+		      				</td>
+		      			</tr>
+
+		      			<tr>
+		      				<td>
+		      					GPS Link
+		      				</td>
+		      				<td>
+		      					<input type="text" name="glink" class="form-control" value = "{{items.gps_link}}" required>
+		      				</td>
+		      			</tr>
+
+		      			<tr>
+		      				<td>
+		      					<input type="submit" name="save" value="Update Shuttle" class="btn btn-warning">
+		      				</td>
+		      			</tr>
+		      			{% endfor %}
+		      		</table>	   
+		      
+		</form>
+		<!-- end of add -->
+	</div>
+</section>
+
+<script>
+                window.onunload = refreshParent;
+                function refreshParent() {
+                  window.opener.location.reload();
+                }
+                
+              </script>
+{% endblock content %}

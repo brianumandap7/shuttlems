@@ -1,0 +1,25 @@
+{{month|add:"0"}} -- current month str one orm <br>
+      {{day|add:"0"}} -- current day <br>
+
+
+      {% for items in mtx %}{{items.start_date|date:"m"|add:"0"}}
+        {% if items.start_date|date:"m"|add:"0" == month|add:"0" %}
+          you got it -- tix same month but only from current date <br>
+          {% else %}
+          try again
+        {% endif %}
+      {% endfor %}
+      <hr>
+      {% for items in allmtx %}
+        {{items.start_date|date:"d"|add:"0"}} <br> -- list of this month's trip tickets
+      {% endfor %}
+      <hr>
+      {% for items in allmtx %}
+        {% if day|add:"0" > items.start_date|date:"d"|add:"0"  %}
+        done trip/passive <br>
+
+        {% else %}
+        active <br>
+        {% endif %}
+
+      {% endfor %}

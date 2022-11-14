@@ -1,0 +1,97 @@
+{% extends 'ticket/popupbase.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load static %}
+<style>
+	.bt-c {
+		width: 100px;
+	}
+</style>
+<div class="container-fluid">
+	<center>
+	
+		<table class="table table-striped">
+			<thead class="thead-dark">
+				<th>Date of Travel</th>
+				<th>Time of Travel</th>
+				<th>Purpose</th>
+				<th>Filed by</th>
+				<th>Status of Ticket</th>
+				<th>Action</th>
+			</thead>
+			{% for items in list %}
+			<tr>
+				<td>
+					{{items.start_date}}
+				</td>
+				<td>
+					{{items.start_time}}
+				</td>
+				<td>
+					{{items.description}}
+				</td>
+				<td>
+					{{items.user}}
+				</td>
+				<td>
+					{{items.ticket_status}}
+				</td>
+				
+				<td>
+					<a class="btn btn-success bt-c" onclick="window.open('/ticket/view_ticket/{{items.ticket_id}}','popupticket','width=950,height=600'); return false;">
+                             View
+                          </a>
+				{% if items.ticket_status_id == 2 %}
+					
+						<a href="/media/{{items.qr_code}}" target = "_blank"class="btn btn-primary bt-c">QR Code</a>
+					
+					
+				{% endif %}
+
+				{% if items.ticket_status_id == 1 %}
+					
+
+						<button type="button" class="btn btn-warning bt-c" data-toggle="modal" data-target="#exampleModal">
+					  Cancel
+					</button>
+					
+					
+					<!-- Button trigger modal -->
+					
+					<!-- Modal -->
+					<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					  <div class="modal-dialog" role="document">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <h5 class="modal-title" id="exampleModalLabel">Cancel Ticket</h5>
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					          <span aria-hidden="true">&times;</span>
+					        </button>
+					      </div>
+					      
+					      <div class="modal-body">
+					      	
+							
+					        Are you sure you want to cancel this trip ticket?
+					      </div>
+					      <div class="modal-footer">
+					      	<a href="/ticket/cancel_ticket/{{items.ticket_id}}" class="btn btn-warning bt-c">Proceed</a>
+					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					      </div>
+					  		
+					    </div>
+					  </div>
+					</div>
+				{% endif %}
+				</td>
+			</tr>
+			{% endfor %}
+			
+
+			
+		</table>
+		
+	
+	</center>
+</div>
+{% endblock content %}

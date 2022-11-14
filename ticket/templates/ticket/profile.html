@@ -1,0 +1,81 @@
+{% extends 'ticket/popupbase.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+<style>
+	.dp {
+		width: 150px;
+		height: 150px;
+	}
+</style>
+{% for items in dp %}
+	<center>
+		<img src="/media/{{items.profile_picture}}" alt="dp" class="img-responsive dp">
+	</center>
+	<br>
+
+	{% if items.role_id == 8 %} <!-- student -->
+	<table class="table table-stripped">
+		<tbody>
+			<tr>
+				<td>Full Name</td>
+				<td>{{user.get_full_name}}</td>
+			</tr>
+			<tr>
+				<td>Full Name</td>
+				<td>{{user.get_full_name}}</td>
+			</tr>
+		</tbody>
+		
+	</table>
+	{% endif %}
+
+	{% if items.role_id == 9 %} <!-- employee -->
+	<table class="table table-stripped">
+		<tbody>
+			<tr>
+				<td>Full Name</td>
+				<td>{{user.get_full_name}}</td>
+			</tr>
+			<tr>
+				<td>Position</td>
+				<td>{{items.position}}</td>
+			</tr>
+			<tr>
+				<td>Department</td>
+				<td>{{items.course_or_department}}</td>
+			</tr>
+			<tr>
+				<td>Employee Number</td>
+				<td>{{items.student_or_employee_number}}</td>
+			</tr>
+
+			<tr>
+				<td>QR Code for Shuttle Ride</td>
+				<td><a href="/media/{{items.qr_code}}"><img src="/media/{{items.qr_code}}" alt="qr code" class="img-responsive dp"></a></td>
+			</tr>
+		</tbody>
+		
+	</table>
+	{% endif %}
+
+	{% if items.role_id == 10 %} <!-- fts -->
+	<table class="table table-stripped">
+		<tbody>
+			<tr>
+				<td>Full Name</td>
+				<td>{{user.get_full_name}}</td>
+			</tr>
+			<tr>
+				<td>Full Name</td>
+				<td>{{user.get_full_name}}</td>
+			</tr>
+		</tbody>
+		
+	</table>
+	{% endif %}
+
+{% endfor %}
+
+{% endblock content %}
