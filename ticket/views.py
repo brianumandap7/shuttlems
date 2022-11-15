@@ -27,7 +27,7 @@ def admindash(request):
 
 def student_page(request):
 	query = {
-		
+		'gp': shuttle_service.objects.all(),
 	}
 	now = tz.now()
 	query['now'] = now

@@ -92,7 +92,7 @@
           <!-- <img src="{% static 'basetemp/dist/img/avatar5.png' %}" class="img-circle elevation-2" alt="User Image"> -->
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{user.get_full_name}}</a>
+          <a href = "#" class="d-block" onclick="window.open('/ticket/profile','popupticket','width=950,height=600'); return false;">{{user.get_full_name}}</a>
         </div>
       </div>
 
