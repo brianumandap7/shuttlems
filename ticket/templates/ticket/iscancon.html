@@ -1,0 +1,9 @@
+{% extends 'ticket/studentbase.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load static %}
+{{con}}
+	<script>
+		window.location.href = '/ticket/iscan';
+	</script>
+{% endblock content %}

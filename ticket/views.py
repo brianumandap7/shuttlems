@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponseRedirect
 from django.contrib.auth.models import User
-from .models import Tickets, Status, Stations, shuttle, destination, current_loc, imhere, answers, questions, hdf, reserve, participants, shuttle_service, shuttle_service_list, shuttle_driver
+from .models import Tickets, Status, Stations, shuttle, destination, current_loc, imhere, answers, questions, hdf, reserve, participants, shuttle_service, shuttle_service_list, shuttle_driver, shuttle_ride
 from login.models import Roles, Author
 from django.utils import timezone as tz
 from django.db.models import Q
@@ -342,4 +342,12 @@ def add_driver(request):
 		db.save()
 
 	return render(request, 'ticket/add_driver.html', query)
+
+def iscancon(request, con = ''):
+	query = {
+		'con': con,
+		'exec': shuttle_ride.objects.create(shuttle_ride_log = con)
+	}
+
+	return render(request, 'ticket/iscancon.html', query)
 

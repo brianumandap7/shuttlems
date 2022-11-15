@@ -237,5 +237,14 @@ class shuttle_service(models.Model):
     def __str__(self):
         return str(self.shuttle_name)+" "+str(self.gps_link)
 
+class shuttle_ride(models.Model):        
+    # required to associate Author model with User model (Important)
+    shuttle_ride_id = models.AutoField(primary_key=True)
+    shuttle_ride_log = models.CharField(max_length=255, blank=True, null = True)
+    shuttle_ride_date = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return str(self.shuttle_ride_log)+" "+str(self.shuttle_ride_date)
+
 
 

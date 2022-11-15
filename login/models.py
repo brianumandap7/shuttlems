@@ -32,7 +32,7 @@ class Author(models.Model):
         return self.user.username
 
     def save(self, *args, **kwargs):
-        qrcode_img = qrcode.make("Shuttle Ride / "+str(self.user.username))
+        qrcode_img = qrcode.make("Shuttle Ride by "+str(self.user.username))
         canvas = Image.new('RGB', (500, 500), 'white')
         draw = ImageDraw.Draw(canvas)
         canvas.paste(qrcode_img)
