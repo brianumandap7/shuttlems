@@ -2,10 +2,25 @@
 {% block content %}
 {% load crispy_forms_tags %}
 {% load static %}
+
 <style>
   div .vt {
     color: black;
     text-decoration: none;
+  }
+
+  .idiv {
+    overflow: hidden;
+    width: 900px;
+    height: 350px;
+  }
+
+  .capt {
+    margin-top: -50px;
+  }
+
+  .content {
+    overflow: hidden;
   }
 </style>
 <section class="content">
@@ -32,7 +47,7 @@
         {% endfor %}
         </div>
 
-    <div class="container-fluid">
+        <div class="container-fluid">
                 <div class="row">
                   {% for items in gp %}
                   <div class="col-lg-6 col-xs-12 col-md-6">
@@ -48,6 +63,7 @@
                   
                 </div>
               </div> 
+
 </section>
 
 {% endblock content %}
