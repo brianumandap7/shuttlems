@@ -25,6 +25,14 @@ class Ticket_status(models.Model):
     def __str__(self):
         return str(self.ticket_status)
 
+class shuttle_driver(models.Model):        
+    # required to associate Author model with User model (Important)
+    shuttle_driver_id = models.AutoField(primary_key=True)
+    driver_name = models.CharField(max_length=255, blank=True, null = True)
+    
+    def __str__(self):
+        return str(self.driver_name)
+
 class Tickets(models.Model):        
     # required to associate Author model with User model (Important)
     ticket_id = models.AutoField(primary_key=True)
@@ -34,7 +42,7 @@ class Tickets(models.Model):
     date_filed = models.DateTimeField(blank=True, null = True, auto_now_add=True)
     description = models.CharField(max_length=255, blank=True, null = True)
     destination = models.CharField(max_length=255, blank=True, null = True)
-    driver = models.CharField(max_length=255, blank=True, null = True)
+    driver = models.ForeignKey(shuttle_driver, null=True, blank=True, on_delete=models.CASCADE)
     email = models.CharField(max_length=255, blank=True, null = True)
     ticket_status = models.ForeignKey(Ticket_status, null=True, blank=True, on_delete=models.CASCADE)
     cancel_reason = models.CharField(max_length=255, blank=True, null = True)
@@ -211,13 +219,6 @@ class hdf(models.Model):
         canvas.close()
         super().save(*args, **kwargs)
 
-class shuttle_driver(models.Model):        
-    # required to associate Author model with User model (Important)
-    shuttle_driver_id = models.AutoField(primary_key=True)
-    driver_name = models.CharField(max_length=255, blank=True, null = True)
-    
-    def __str__(self):
-        return str(self.driver_name)
 
 class shuttle_service_list(models.Model):        
     # required to associate Author model with User model (Important)

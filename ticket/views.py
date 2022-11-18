@@ -6,6 +6,7 @@ from django.utils import timezone as tz
 from django.db.models import Q
 import datetime
 import calendar
+import json
 
 
 
@@ -123,8 +124,16 @@ def fts_ticket(request):
 def a(request, tag = 0):
 	query = {
 		'tag': tag,
-		'exec': Tickets.objects.filter(ticket_id = tag).update(ticket_status_id = 2),
+		'dr': shuttle_driver.objects.all(),
 	}
+
+	if request.method == "POST":
+		db = Tickets.objects.get(ticket_id = tag)
+		db.driver_id = request.POST.get('d') or None
+		db.ticket_status_id = 2
+		db.save()
+
+		return HttpResponseRedirect('/ticket/fts_ticket')
 
 	return render(request, 'ticket/a.html', query)
 def d(request, tag = 0):
@@ -355,6 +364,53 @@ def datav(request):
 	query = {
 
 	}
+	now = tz.now()
+	query['now'] = now
+	today = datetime.date.today()
+
+	query['month'] = str(today.month)
+	query['day'] = str(today.day)
+	query['ride123'] = shuttle_ride.objects.all()
+	query['ride1'] = shuttle_ride.objects.filter(Q(shuttle_ride_date__month = str(today.month))&Q(shuttle_ride_date__day__lte = str(7))).count()
+	query['ride2'] = shuttle_ride.objects.filter(Q(shuttle_ride_date__month = str(today.month))&(Q(shuttle_ride_date__day__gte = str(8))&Q(shuttle_ride_date__day__lte = str(14)))).count()
+	query['ride3'] = shuttle_ride.objects.filter(Q(shuttle_ride_date__month = str(today.month))&(Q(shuttle_ride_date__day__gte = str(15))&Q(shuttle_ride_date__day__lte = str(21)))).count()
+	query['ride4'] = shuttle_ride.objects.filter(Q(shuttle_ride_date__month = str(today.month))&(Q(shuttle_ride_date__day__gte = str(22))&Q(shuttle_ride_date__day__lte = str(31)))).count()
+	
+	query['h1'] = shuttle_ride.objects.filter(Q(shuttle_ride_date__month = str(today.month))&Q(shuttle_ride_date__hour = str(1))).count()
+	query['h2'] = shuttle_ride.objects.filter(Q(shuttle_ride_date__month = str(today.month))&Q(shuttle_ride_date__hour = str(2))).count()
+	query['h3'] = shuttle_ride.objects.filter(Q(shuttle_ride_date__month = str(today.month))&Q(shuttle_ride_date__hour = str(3))).count()
+	query['h4'] = shuttle_ride.objects.filter(Q(shuttle_ride_date__month = str(today.month))&Q(shuttle_ride_date__hour = str(4))).count()
+	query['h5'] = shuttle_ride.objects.filter(Q(shuttle_ride_date__month = str(today.month))&Q(shuttle_ride_date__hour = str(5))).count()
+	query['h6'] = shuttle_ride.objects.filter(Q(shuttle_ride_date__month = str(today.month))&Q(shuttle_ride_date__hour = str(6))).count()
+	query['h7'] = shuttle_ride.objects.filter(Q(shuttle_ride_date__month = str(today.month))&Q(shuttle_ride_date__hour = str(7))).count()
+	query['h8'] = shuttle_ride.objects.filter(Q(shuttle_ride_date__month = str(today.month))&Q(shuttle_ride_date__hour = str(8))).count()
+	query['h9'] = shuttle_ride.objects.filter(Q(shuttle_ride_date__month = str(today.month))&Q(shuttle_ride_date__hour = str(9))).count()
+	query['h10'] = shuttle_ride.objects.filter(Q(shuttle_ride_date__month = str(today.month))&Q(shuttle_ride_date__hour = str(10))).count()
+	query['h11'] = shuttle_ride.objects.filter(Q(shuttle_ride_date__month = str(today.month))&Q(shuttle_ride_date__hour = str(11))).count()
+	query['h12'] = shuttle_ride.objects.filter(Q(shuttle_ride_date__month = str(today.month))&Q(shuttle_ride_date__hour = str(12))).count()
+	query['m'] = Author.objects.filter(sex_id = 1).count()
+	query['f'] =Author.objects.filter(sex_id = 2).count()
+
+	query['w1'] = json.dumps(query['ride1'])
+	query['w2'] = json.dumps(query['ride2'])
+	query['w3'] = json.dumps(query['ride3'])
+	query['w4'] = json.dumps(query['ride4'])
+
+	query['t1'] = json.dumps(query['h1'])
+	query['t2'] = json.dumps(query['h2'])
+	query['t3'] = json.dumps(query['h3'])
+	query['t4'] = json.dumps(query['h4'])
+	query['t5'] = json.dumps(query['h5'])
+	query['t6'] = json.dumps(query['h6'])
+	query['t7'] = json.dumps(query['h7'])
+	query['t8'] = json.dumps(query['h8'])
+	query['t9'] = json.dumps(query['h9'])
+	query['t10'] = json.dumps(query['h10'])
+	query['t11'] = json.dumps(query['h11'])
+	query['t12'] = json.dumps(query['h12'])
+
+	query['male'] = json.dumps(query['m'])
+	query['female'] = json.dumps(query['f'])
 
 	return render(request, 'ticket/datav.html', query)
 

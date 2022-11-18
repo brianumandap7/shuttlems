@@ -1,4 +1,38 @@
-<script>
-		window.location.href = '/ticket/fts_ticket';
-
-	</script>
+{% extends 'ticket/popupbase.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load static %}
+<style>
+.btn-s {
+	width: 150px;
+}
+</style>
+<form method="POST">
+	{% csrf_token %}
+	<table class="table">
+		<tbody>
+		<tr>
+			<td>
+				<center><strong>Select Driver:</strong></center>
+			</td>
+			<td>
+				<center>
+					<select name="d" class="form-control s">
+						{% for items in dr %}
+						<option value="{{items.shuttle_driver_id}}">{{items.driver_name}}</option>
+						{% endfor %}
+					</select>
+				</center>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<center><input type="submit" name="save" value="Select Driver" class="btn btn-success btn-s"></center>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+	
+	
+</form>
+{% endblock content %}

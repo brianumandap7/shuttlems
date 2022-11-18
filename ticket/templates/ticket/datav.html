@@ -7,19 +7,19 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-4 col-md-4 col-xs-4 chrt">
-				<center>Gender Visualization</center>
+				<center>Gender Visualization of Registered Users</center>
 	          <canvas id="myChart"></canvas>
 	        </div>
 	        <div class="col-lg-4 col-md-4 col-xs-4 chrt2">
-		        <center>Shuttle Ride for November</center>
+		        <center>Shuttle Ride for this Month</center>
 		      <canvas id="myChart1"></canvas>
 		    </div>
 		    <div class="col-lg-4 col-md-4 col-xs-4 chrt2">
-		        <center>Peak Hours</center>
+		        <center>Peak Hours This Month</center>
 		      <canvas id="myChart2"></canvas>
 		    </div>
 		</div>
-    	
+
 	</div>
 </section>
 
@@ -29,7 +29,7 @@
   type: 'pie',
   data: {
     datasets: [{
-      data: [11, 12],
+      data: [{{male|safe}}, {{female|safe}}],
       backgroundColor: [
       '#007BFF', '#DC3545', '#FFC107', '#343A40', '#28A745', '#6C757D'
       ],
@@ -53,11 +53,11 @@
   type: 'bar',
   data: {
     datasets: [{
-      data: [8, 10, 12, 0],
+      data: [{{w1|safe}}, {{w2|safe}}, {{w3|safe}}, {{w4|safe}}],
       backgroundColor: [
       '#007BFF', '#DC3545', '#FFC107', '#343A40', '#28A745', '#6C757D'
       ],
-      label: 'Population'
+      label: 'This Month Weekly Ridership'
     }],
     labels: ['1st Week', '2nd Week', '3rd Week', '4th Week']
   },
@@ -77,7 +77,7 @@
   type: 'line',
   data: {
     datasets: [{
-      data: [2,4,6,5,10,12,11,14,13,18,17,10],
+      data: [{{t7|safe}},{{t8|safe}}, {{t9|safe}}, {{t10|safe}}, {{t11|safe}}, {{t12|safe}}, {{t1|safe}}, {{t2|safe}}, {{t3|safe}}, {{t4|safe}}, {{t5|safe}}, {{t6|safe}}],
       backgroundColor: [
       '#007BFF', '#DC3545', '#FFC107', '#343A40', '#28A745', '#6C757D'
       ],
