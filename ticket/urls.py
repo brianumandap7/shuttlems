@@ -40,6 +40,7 @@ urlpatterns = [
     path('add_shuttle_list/', login_required(views.add_shuttle_list), name='add_shuttle_list'),
     path('add_driver/', login_required(views.add_driver), name='add_driver'),
     path('iscan/<str:con>', login_required(views.iscancon), name='iscancon'),
+    path('datav/', login_required(views.datav), name='iscancon'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

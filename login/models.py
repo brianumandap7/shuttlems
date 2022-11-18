@@ -14,6 +14,12 @@ class Roles(models.Model):
 	def __str__(self):
 		return self.role+" ID: "+str(self.role_id)
 
+class Sex(models.Model):
+    sex_id = models.AutoField(primary_key=True)
+    sex = models.CharField(max_length=255, blank=True, null = True)
+    def __str__(self):
+        return self.sex
+
 class Author(models.Model):        
     # required to associate Author model with User model (Important)
     user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
@@ -26,6 +32,7 @@ class Author(models.Model):
     student_or_employee_number = models.CharField(max_length=255, blank=True, null = True)
     year_level = models.CharField(max_length=255, blank=True, null = True)
     course_or_department = models.CharField(max_length=255, blank=True, null = True)
+    sex = models.ForeignKey(Sex, null=True, blank=True, on_delete=models.CASCADE)
     qr_code = models.ImageField(upload_to = 'uploads/', blank = True, null = True)
 
     def __str__(self):

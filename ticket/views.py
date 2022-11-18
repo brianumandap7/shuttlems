@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponseRedirect
 from django.contrib.auth.models import User
 from .models import Tickets, Status, Stations, shuttle, destination, current_loc, imhere, answers, questions, hdf, reserve, participants, shuttle_service, shuttle_service_list, shuttle_driver, shuttle_ride
-from login.models import Roles, Author
+from login.models import Roles, Author,Sex
 from django.utils import timezone as tz
 from django.db.models import Q
 import datetime
@@ -350,4 +350,11 @@ def iscancon(request, con = ''):
 	}
 
 	return render(request, 'ticket/iscancon.html', query)
+
+def datav(request):
+	query = {
+
+	}
+
+	return render(request, 'ticket/datav.html', query)
 

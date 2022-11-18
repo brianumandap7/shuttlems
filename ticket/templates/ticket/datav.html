@@ -1,0 +1,98 @@
+{% extends 'ticket/popupbase.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load static %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<section>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-4 col-md-4 col-xs-4 chrt">
+				<center>Gender Visualization</center>
+	          <canvas id="myChart"></canvas>
+	        </div>
+	        <div class="col-lg-4 col-md-4 col-xs-4 chrt2">
+		        <center>Shuttle Ride for November</center>
+		      <canvas id="myChart1"></canvas>
+		    </div>
+		    <div class="col-lg-4 col-md-4 col-xs-4 chrt2">
+		        <center>Peak Hours</center>
+		      <canvas id="myChart2"></canvas>
+		    </div>
+		</div>
+    	
+	</div>
+</section>
+
+
+<script>
+ const config = {
+  type: 'pie',
+  data: {
+    datasets: [{
+      data: [11, 12],
+      backgroundColor: [
+      '#007BFF', '#DC3545', '#FFC107', '#343A40', '#28A745', '#6C757D'
+      ],
+      label: 'Ridership'
+    }],
+    labels: ['Male Passenger', 'Female Passenger']
+  },
+  options: {
+    responsive: true
+  } 
+  };
+
+  const myChart = new Chart(
+  	document.getElementById('myChart'),
+  	config,	
+  	);
+</script>
+
+<script>
+ const config1 = {
+  type: 'bar',
+  data: {
+    datasets: [{
+      data: [8, 10, 12, 0],
+      backgroundColor: [
+      '#007BFF', '#DC3545', '#FFC107', '#343A40', '#28A745', '#6C757D'
+      ],
+      label: 'Population'
+    }],
+    labels: ['1st Week', '2nd Week', '3rd Week', '4th Week']
+  },
+  options: {
+    responsive: true
+  } 
+  };
+
+  const myChart1 = new Chart(
+  	document.getElementById('myChart1'),
+  	config1,	
+  	);
+</script>
+
+<script>
+ const config2 = {
+  type: 'line',
+  data: {
+    datasets: [{
+      data: [2,4,6,5,10,12,11,14,13,18,17,10],
+      backgroundColor: [
+      '#007BFF', '#DC3545', '#FFC107', '#343A40', '#28A745', '#6C757D'
+      ],
+      label: 'Population'
+    }],
+    labels: ['7AM', '8AM', '9AM', '10AM', '11AM', '12NN', '1PM', '2PM', '3PM', '4PM', '5PM', '6PM']
+  },
+  options: {
+    responsive: true
+  } 
+  };
+
+  const myChart2 = new Chart(
+  	document.getElementById('myChart2'),
+  	config2,	
+  	);
+ </script>
+{% endblock content %}
