@@ -41,6 +41,11 @@ urlpatterns = [
     path('add_driver/', login_required(views.add_driver), name='add_driver'),
     path('iscan/<str:con>', login_required(views.iscancon), name='iscancon'),
     path('datav/', login_required(views.datav), name='iscancon'),
+    path('add_users/', login_required(views.add_users), name='add_users'),
+    path('assign/', login_required(views.assign), name='assign'),
+    path('assign_role/<int:us>', login_required(views.assign_role), name='assign_role'),
+    path('add_role/<int:us>', login_required(views.add_role), name='add_role'),
+    path('delete_role/<int:tag>', login_required(views.delete_role), name='delete_role'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

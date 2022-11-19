@@ -1,0 +1,81 @@
+{% extends 'ticket/popupbase.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+
+	<section>
+		<div class="container-fluid">
+			<form method="POST">
+				{% csrf_token %}
+				<table class="table">
+					<tbody>
+						
+						<tr>
+							<td>Username</td>
+
+							<td>
+								<input type="text" name="uname" class="form-control" value="{% for items in u %}{{items.username}}{% endfor %}" disabled>
+							</td>
+						</tr>
+						<tr>
+							<td>Role</td>
+							<td>
+								<select class="form-control" name="role">
+									<option value="8" {% for items in a %}{% if items.role_id == 8 %}selected{% endif %}{% endfor %}>Student</option>
+									<option value="9" {% for items in a %}{% if items.role_id == 9 %}selected{% endif %}{% endfor %}>Employee</option>
+									<option value="10" {% for items in a %}{% if items.role_id == 10 %}selected{% endif %}{% endfor %}>FTS</option>
+								</select>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Position</td>
+							<td>
+								<input type="text" name="position" class="form-control" value="{% for items in a %}{{items.position}}{% endfor %}">
+							</td>
+						</tr>
+
+						<tr>
+							<td>Student/Employee Number</td>
+							<td>
+								<input type="text" name="snum" class="form-control" value="{% for items in a %}{{items.student_or_employee_number}}{% endfor %}">
+							</td>
+						</tr>
+
+						<tr>
+							<td><small>Only for student (indicate year Level)</small>Year Level</td>
+
+							<td>
+								<input type="text" name="ylevel" class="form-control" value="{% for items in a %}{{items.year_level}}{% endfor %}">
+							</td>
+						</tr>
+
+						<tr>
+							<td>Course of Department</td>
+							<td>
+								<input type="text" name="cd" class="form-control" value="{% for items in a %}{{items.course_or_department}}{% endfor %}">
+							</td>
+						</tr>
+
+						<tr>
+							<td>Gender</td>
+							<td>
+								<select class="form-control" name="sex">
+									<option value="1" {% for items in a %}{% if items.sex_id == 1 %}selected{% endif %}{% endfor %}>Male</option>
+									<option value="2" {% for items in a %}{% if items.sex_id == 2 %}selected{% endif %}{% endfor %}>Female</option>
+								</select>
+							</td>
+						</tr>
+
+						<tr>
+							<td>
+								<input type="submit" name="save" class="btn btn-success" value="Assign">
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+		</div>
+	</section>
+{% endblock content %}

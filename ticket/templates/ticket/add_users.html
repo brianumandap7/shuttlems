@@ -1,0 +1,78 @@
+{% extends 'ticket/popupbase.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+<section>
+	<div class="container-fluid">
+		<form method="POST">
+			{% csrf_token %}
+			<table class="table">
+				<tbody>
+					<tr>
+						<td>
+							Username
+						</td>
+						<td>
+							<input type="text" name="uname" class="form-control">
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							Password
+						</td>
+						<td>
+							<input type="password" name="pword" class="form-control">
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							First Name
+						</td>
+						<td>
+							<input type="text" name="fname" class="form-control">
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							Last Name
+						</td>
+						<td>
+							<input type="text" name="lname" class="form-control">
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							Email Address
+						</td>
+						<td>
+							<input type="email" name="eadd" class="form-control">
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							<input type="submit" name="save" value="Save User" class="btn btn-success">
+						</td>
+						
+					</tr>
+				</tbody>
+			</table>	
+		</form>
+	</div>
+</section>
+
+
+
+<script>
+                window.onunload = refreshParent;
+                function refreshParent() {
+                  window.opener.location.reload();
+                }
+                
+              </script>
+{% endblock content %}

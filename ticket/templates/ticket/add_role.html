@@ -1,0 +1,81 @@
+{% extends 'ticket/popupbase.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+
+	<section>
+		<div class="container-fluid">
+			<form method="POST">
+				{% csrf_token %}
+				<table class="table">
+					<tbody>
+						
+						<tr>
+							<td>Username</td>
+
+							<td>
+								<input type="text" name="uname" class="form-control" value="{% for items in u %}{{items.username}}{% endfor %}" readonly>
+							</td>
+						</tr>
+						<tr>
+							<td>Role</td>
+							<td>
+								<select class="form-control" name="role">
+									<option value="8">Student</option>
+									<option value="9">Employee</option>
+									<option value="10">FTS</option>
+								</select>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Position</td>
+							<td>
+								<input type="text" name="position" class="form-control">
+							</td>
+						</tr>
+
+						<tr>
+							<td>Student/Employee Number</td>
+							<td>
+								<input type="text" name="snum" class="form-control">
+							</td>
+						</tr>
+
+						<tr>
+							<td><small>Only for student (indicate year Level)</small>Year Level</td>
+
+							<td>
+								<input type="text" name="ylevel" class="form-control">
+							</td>
+						</tr>
+
+						<tr>
+							<td>Course of Department</td>
+							<td>
+								<input type="text" name="cd" class="form-control">
+							</td>
+						</tr>
+
+						<tr>
+							<td>Gender</td>
+							<td>
+								<select class="form-control" name="sex">
+									<option value="1">Male</option>
+									<option value="2">Female</option>
+								</select>
+							</td>
+						</tr>
+
+						<tr>
+							<td>
+								<input type="submit" name="save" class="btn btn-success" value="Assign">
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+		</div>
+	</section>
+{% endblock content %}

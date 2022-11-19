@@ -414,3 +414,80 @@ def datav(request):
 
 	return render(request, 'ticket/datav.html', query)
 
+def add_users(request):
+	query = {
+
+	}
+	if request.method == "POST":
+		db = User()
+		db.username = request.POST.get('uname') or None
+		password = request.POST.get('pword')
+
+		db.set_password(password)
+
+		db.first_name = request.POST.get('fname')
+		db.last_name = request.POST.get('lname')
+		db.email = request.POST.get('eadd')
+
+		db.save()
+
+		return HttpResponseRedirect('/ticket/latest')
+	return render(request, 'ticket/add_users.html', query)
+
+def assign(request):
+	query = {
+		'all': User.objects.all(),
+		'au': Author.objects.all(),
+	}
+
+	return render(request, 'ticket/assign.html', query)
+
+
+def assign_role(request, us = 0):
+	query = {
+		'us': us,
+		'u': User.objects.filter(id = us),
+		'a': Author.objects.filter(user_id = us),
+	}
+	if request.method == "POST":
+		db = Author.objects.get(user_id = us)
+		db.role_id = request.POST.get('role')
+		db.position	= request.POST.get('position')
+		db.student_or_employee_number = request.POST.get('snum')
+		db.year_level = request.POST.get('ylevel')
+		db.course_or_department = request.POST.get('cd')
+		db.sex_id = request.POST.get('sex')
+
+		db.save()
+		return HttpResponseRedirect('/ticket/assign')
+	return render(request, 'ticket/assign_role.html', query)
+
+def add_role(request, us = 0):
+	query = {
+		'us': us,
+		'u': User.objects.filter(id = us),
+		'a': Author.objects.filter(user_id = us),
+	}
+	if request.method == "POST":
+		db = Author()
+		db.user_id = us
+		db.role_id = request.POST.get('role')
+		db.position	= request.POST.get('position')
+		db.student_or_employee_number = request.POST.get('snum')
+		db.year_level = request.POST.get('ylevel')
+		db.course_or_department = request.POST.get('cd')
+		db.sex_id = request.POST.get('sex')
+
+		db.save()
+		return HttpResponseRedirect('/ticket/cw')
+	return render(request, 'ticket/add_role.html', query)
+
+def delete_role(request, tag = 0):
+	query = {
+		'tag': tag,
+		'exec': User.objects.filter(id = tag).delete(),
+	}
+
+	return render(request, 'ticket/delete_user.html', query)
+
+

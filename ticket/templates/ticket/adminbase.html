@@ -161,31 +161,37 @@
             
           </li>
           <li class="nav-item">
-            <a href="/admin/auth/user/" target="_blank" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
+
+            <a href = "#" class="nav-link" onclick="window.open('/ticket/add_users','popupticket','width=950,height=600'); return false;">
+                      <i class="nav-icon fas fa-users"></i>
               <p>
                 Add Users
               </p>
             </a>
+           
           </li>
+          
           <li class="nav-item">
-            <a href="/admin/login/roles/" target="_blank" class="nav-link">
-              <i class="nav-icon fas fa-users-cog"></i>
+            <a href = "#" class="nav-link" onclick="window.open('/ticket/assign','popupticket','width=950,height=600'); return false;">
+                      <i class="nav-icon fas fa-users"></i>
               <p>
-                Add Roles
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="/admin/login/author/" target="_blank" class="nav-link">
-              <i class="nav-icon fas fa-user-cog"></i>
-              <p>
-                Assign Roles
+                User Role Management
               </p>
             </a>
           </li>
           
-          
+          <li class="nav-header">Tickets</li>
+          <li class="nav-item">
+
+            <a href = "#" class="nav-link" onclick="window.open('/ticket/fts_ticket','popupticket','width=950,height=600'); return false;"><i class="nav-icon fas fa-book"></i><p>View Tickets</p>
+            </a>
+          </li>
+          <li class="nav-item">
+
+            <a href = "#" class="nav-link" onclick="window.open('/ticket/hdf_list','popupticket','width=950,height=600'); return false;"><i class="nav-icon fas fa-book"></i><p>View Health Dec</p>
+            </a>
+          </li>
+
           <li class="nav-header">Shuttle MANAGEMENT</li>
           <li class="nav-item">
             <a href="/admin/ticket/shuttle/" target="_blank" class="nav-link">

@@ -1,0 +1,43 @@
+{% extends 'ticket/popupbase.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+<section>
+	<div class="container-fluid">
+		<form method="POST">
+			{% csrf_token %}
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Username</th>
+						<th>Full Name</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for items in all %}
+					<tr>
+						<td>
+							{{items.username}}
+						</td>
+
+						<td>
+							{{items.first_name}} {{items.last_name}}
+						</td>
+
+						<td>
+							<a href="/ticket/add_role/{{items.id}}" class="btn btn-primary">Assign Role</a>
+							<a href="/ticket/assign_role/{{items.id}}" class="btn btn-success">Edit Role</a>
+							<a href="/ticket/delete_role/{{items.id}}" class="btn btn-danger">Delete</a>
+						</td>
+
+					</tr>
+
+					{% endfor %}
+				</tbody>
+			</table>
+		</form>
+	</div>
+</section>
+{% endblock content %}
