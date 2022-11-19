@@ -12,11 +12,12 @@
 					<tr>
 						<th>Username</th>
 						<th>Full Name</th>
+						<th>Email Address</th>
 						<th>Actions</th>
 					</tr>
 				</thead>
 				<tbody>
-					{% for items in all %}
+					{% for items in us %}
 					<tr>
 						<td>
 							{{items.username}}
@@ -27,8 +28,11 @@
 						</td>
 
 						<td>
-							<a href="/ticket/add_role/{{items.id}}" class="btn btn-primary">Assign Role</a>
-							<a href="/ticket/assign_role/{{items.id}}" class="btn btn-success">Edit Role</a>
+							{{items.email}}
+						</td>
+
+						<td>
+							<a href="/ticket/edit_user/{{items.id}}" class="btn btn-warning">Edit User</a>
 						</td>
 
 					</tr>

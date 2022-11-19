@@ -431,7 +431,7 @@ def add_users(request):
 
 		db.save()
 
-		return HttpResponseRedirect('/ticket/latest')
+		return HttpResponseRedirect('/ticket/cw')
 	return render(request, 'ticket/add_users.html', query)
 
 def assign(request):
@@ -489,5 +489,37 @@ def delete_role(request, tag = 0):
 	}
 
 	return render(request, 'ticket/delete_user.html', query)
+
+def show_users(request):
+	query = {
+		'us': User.objects.all()
+	}
+
+	return render(request, 'ticket/show_users.html', query)
+
+def edit_user(request, tag = 0):
+	query = {
+		'tag': tag,
+		'us': User.objects.filter(id = tag),
+	}
+
+	if request.method == "POST":
+		db = User.objects.get(id = tag)
+		db.username = request.POST.get('uname') or None
+
+		db.first_name = request.POST.get('fname')
+		db.last_name = request.POST.get('lname')
+		db.email = request.POST.get('eadd')
+
+		if request.POST.get('ac'):
+			db.is_active = True
+		else:
+			db.is_active = False
+
+		db.save()
+
+		return HttpResponseRedirect('/ticket/show_users')
+
+	return render(request, 'ticket/edit_user.html', query)
 
 

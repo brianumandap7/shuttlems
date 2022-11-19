@@ -33,6 +33,7 @@ class Author(models.Model):
     year_level = models.CharField(max_length=255, blank=True, null = True)
     course_or_department = models.CharField(max_length=255, blank=True, null = True)
     sex = models.ForeignKey(Sex, null=True, blank=True, on_delete=models.CASCADE)
+    has_role = models.IntegerField(blank=True, null = True, default = 1)
     qr_code = models.ImageField(upload_to = 'uploads/', blank = True, null = True)
 
     def __str__(self):

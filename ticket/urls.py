@@ -46,6 +46,8 @@ urlpatterns = [
     path('assign_role/<int:us>', login_required(views.assign_role), name='assign_role'),
     path('add_role/<int:us>', login_required(views.add_role), name='add_role'),
     path('delete_role/<int:tag>', login_required(views.delete_role), name='delete_role'),
+    path('show_users/', login_required(views.show_users), name='show_users'),
+    path('edit_user/<int:tag>', login_required(views.edit_user), name='edit_user'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

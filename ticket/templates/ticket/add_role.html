@@ -3,6 +3,25 @@
 {% load crispy_forms_tags %}
 {% load static %}
 
+{% for items in a %}
+	{% if items.has_role == 1 %}
+
+	<table class="table">
+		<tbody>
+			<tr>
+				<td>The user has already been assigned a role.</td>
+			</tr>
+			<tr>
+				<td><a href="/ticket/assign" class="btn btn-success">Go Back</a></td>
+			</tr>
+		</tbody>
+	</table>
+
+
+	
+	{% endif %}
+
+	{% empty %}
 
 	<section>
 		<div class="container-fluid">
@@ -78,4 +97,6 @@
 			</form>
 		</div>
 	</section>
+{% endfor %}
+	
 {% endblock content %}
