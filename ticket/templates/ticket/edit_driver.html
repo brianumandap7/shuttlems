@@ -1,0 +1,27 @@
+{% extends 'ticket/popupbase.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load static %}
+<form method="POST">
+{% csrf_token %}
+	<table class="table">
+		<tr>
+			<td>
+				Driver Name
+			</td>
+			<td>
+				{% for items in sd %}
+				<input type="text" name="dname" value="{{items.driver_name}}" class="form-control" required>
+				{% endfor %}
+			</td>
+		</tr>
+
+		<tr>
+			
+			<td><input type="submit" name="save" value="Upate" class="btn btn-success"></td>
+			
+		</tr>
+	</table>
+</form>	
+
+{% endblock content %}   

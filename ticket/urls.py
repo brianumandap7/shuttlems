@@ -48,6 +48,9 @@ urlpatterns = [
     path('delete_role/<int:tag>', login_required(views.delete_role), name='delete_role'),
     path('show_users/', login_required(views.show_users), name='show_users'),
     path('edit_user/<int:tag>', login_required(views.edit_user), name='edit_user'),
+    path('edit_driver/<int:tag>', login_required(views.edit_driver), name='edit_driver'),
+    path('delete_driver/<int:tag>', login_required(views.delete_driver), name='delete_driver'),
+    path('remove_shuttle/<int:tag>', login_required(views.remove_shuttle), name='remove_shuttle'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

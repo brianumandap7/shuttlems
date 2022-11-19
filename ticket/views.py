@@ -522,4 +522,36 @@ def edit_user(request, tag = 0):
 
 	return render(request, 'ticket/edit_user.html', query)
 
+def edit_driver(request, tag = 0):
+	query = {
+		'tag': tag,
+		'sd': shuttle_driver.objects.filter(shuttle_driver_id = tag),
+	}
+
+	if request.method == "POST":
+		db = shuttle_driver.objects.get(shuttle_driver_id = tag)
+		db.driver_name = request.POST.get('dname') or None
+		db.save()
+
+		return HttpResponseRedirect('/ticket/add_driver')
+
+	return render(request, 'ticket/edit_driver.html', query)
+
+def delete_driver(request, tag = 0):
+	query = {
+		'tag': tag,
+		'sd': shuttle_driver.objects.filter(shuttle_driver_id = tag).delete(),
+	}
+
+	return render(request, 'ticket/delete_driver.html', query)
+
+def remove_shuttle(request, tag = 0):
+	query = {
+		'tag': tag,
+		'sd': shuttle_service_list.objects.filter(shuttle_service_list_id = tag).delete(),
+	}
+
+	return render(request, 'ticket/remove_shuttle.html', query)
+
+
 

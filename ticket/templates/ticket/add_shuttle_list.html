@@ -17,6 +17,10 @@
 					<th>
 						Driver Assigned
 					</th>
+
+					<th>
+						Actions
+					</th>
 				</tr>
 			</thead>
 
@@ -33,6 +37,10 @@
 
 					<td>
 						{{items.driver_name}}
+					</td>
+
+					<td>
+						<a href="/ticket/remove_shuttle/{{items.shuttle_service_list_id}}" class="btn btn-danger">Remove</a>
 					</td>
 				</tr>
 				{% endfor %}
