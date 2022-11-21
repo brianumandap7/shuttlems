@@ -24,7 +24,7 @@
   }
 </style>
 <section class="content">
-      <div class="container-fluid">
+      <div class="container">
         {% for i in mtx %}
             {% for items in part %}
             {% if items.ticket.start_date|date:"Y-m-d" == today %}
@@ -47,7 +47,7 @@
         {% endfor %}
         </div>
 
-        <div class="container-fluid">
+        <div class="container">
                 <div class="row">
                   {% for items in gp %}
                   <div class="col-lg-6 col-xs-12 col-md-6">

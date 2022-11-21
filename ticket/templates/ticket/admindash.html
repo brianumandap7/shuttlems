@@ -1,7 +1,26 @@
 {% extends "ticket/adminbase.html" %}
 {% load static %}
 {% block content %} 
+<style>
+  .bg-success1, .btn-success1, .btn-success1:hover {
+    background-color: #103C14;
+    color: white;
+  }
 
+  .bg-gradient-success1 {
+    background-color: #103C14;
+    color: white;
+  }
+
+  .bg-info1 {
+    background-color: white;
+    color: black;
+  }
+
+  .bg-danger1 {
+    background-color: gray;
+  }
+</style>
 
 <section class="content">
       <div class="container-fluid">
@@ -9,7 +28,7 @@
         <div class="row">
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-info">
+            <div class="small-box bg-info1">
               <div class="inner">
                 <h3>{{uc}}</h3>
 
@@ -24,7 +43,7 @@
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-success">
+            <div class="small-box bg-success1">
               <div class="inner">
                 <h3>{{tc}}</h3>
 
@@ -54,7 +73,7 @@
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-danger">
+            <div class="small-box bg-danger1">
               <div class="inner">
                 <h3>{{cc}}</h3>
 
@@ -151,7 +170,7 @@
   
 
             <!-- Calendar -->
-            <div class="card bg-gradient-success">
+            <div class="card bg-gradient-success1">
               <div class="card-header border-0">
 
                 <h3 class="card-title">
@@ -162,7 +181,7 @@
                 <div class="card-tools">
                   <!-- button with a dropdown -->
                   <div class="btn-group">
-                    <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" data-offset="-52">
+                    <button type="button" class="btn btn-success1 btn-sm dropdown-toggle" data-toggle="dropdown" data-offset="-52">
                       <i class="fas fa-bars"></i>
                     </button>
                     <div class="dropdown-menu" role="menu">
@@ -172,10 +191,10 @@
                       <a href="#" class="dropdown-item">View calendar</a>
                     </div>
                   </div>
-                  <button type="button" class="btn btn-success btn-sm" data-card-widget="collapse">
+                  <button type="button" class="btn btn-success1 btn-sm" data-card-widget="collapse">
                     <i class="fas fa-minus"></i>
                   </button>
-                  <button type="button" class="btn btn-success btn-sm" data-card-widget="remove">
+                  <button type="button" class="btn btn-success1 btn-sm" data-card-widget="remove">
                     <i class="fas fa-times"></i>
                   </button>
                 </div>

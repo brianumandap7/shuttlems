@@ -2,7 +2,43 @@
 {% load static %}
 {% block content %} 
 
+<style>
+  .bg-success1 {
+    background-color: #103C14;
+    color: white;
+  }
 
+  .bg-warning1 {
+    background-color: #FFBC14;
+  }
+
+  .icheck-primary1 {
+    background-color: #103C14;
+    color: white;
+  }
+
+  .bg-danger1 {
+    background-color: white;
+  }
+
+  .mi {
+    color: black;
+  }
+
+  .bg-gradient-success1 {
+    background-color: #103C14;
+    color: white;
+  }
+
+  .btn-success1, .btn-success1:hover {
+    background-color: #103C14;
+    color: white;
+  }
+
+  .edit1, .edit1:hover {
+    color: #103C14;
+  }
+</style>
 <section class="content">
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
@@ -11,7 +47,7 @@
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-success">
+            <div class="small-box bg-success1">
               <div class="inner">
                 <h3>{{tc}}</h3>
 
@@ -28,7 +64,7 @@
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-warning">
+            <div class="small-box bg-warning1">
               <div class="inner">
                 <h3>{{sc}}
                   
@@ -46,7 +82,7 @@
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-danger">
+            <div class="small-box bg-danger1">
               <div class="inner">
                 <h3>{{cc}}</h3>
 
@@ -55,7 +91,7 @@
               <div class="icon">
                 <i class="ion ion-android-clipboard"></i>
               </div>
-              <a href = "#" class="small-box-footer" onclick="window.open('/ticket/hdf_list','popupticket','width=1400,height=1300'); return false;">
+              <a href = "#" class="small-box-footer mi" onclick="window.open('/ticket/hdf_list','popupticket','width=1400,height=1300'); return false;">
                              More info <i class="fas fa-arrow-circle-right"></i>
                           </a>
               
@@ -99,7 +135,7 @@
                       <i class="fas fa-ellipsis-v"></i>
                     </span>
                     <!-- checkbox -->
-                    <div  class="icheck-primary d-inline ml-2">
+                    <div  class="icheck-primary1 d-inline ml-2">
                       {% if day|add:"0" > items.start_date|date:"d"|add:"0"  %}
                       <input type="checkbox" value="" name="todo1{{items.ticket_id}}" id="todoCheck1{{items.ticket_id}}" checked>
 
@@ -121,7 +157,7 @@
                     
                     <!-- General tools such as edit or delete-->
                     <div class="tools">
-                      <a href="#" onclick="window.open('/ticket/view_ticket/{{items.ticket_id}}','popupticket','width=1400,height=1300'); return false;">
+                      <a href="#" onclick="window.open('/ticket/view_ticket/{{items.ticket_id}}','popupticket','width=1400,height=1300'); return false;" class="edit1">
                              <i class="fas fa-edit"></i></i>
                           </a>
                       <a href="" target="_blank"></a>
@@ -147,7 +183,7 @@
   
 
             <!-- Calendar -->
-            <div class="card bg-gradient-success">
+            <div class="card bg-gradient-success1">
               <div class="card-header border-0">
 
                 <h3 class="card-title">
@@ -158,7 +194,7 @@
                 <div class="card-tools">
                   <!-- button with a dropdown -->
                   <div class="btn-group">
-                    <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown" data-offset="-52">
+                    <button type="button" class="btn btn-success1 btn-sm dropdown-toggle" data-toggle="dropdown" data-offset="-52">
                       <i class="fas fa-bars"></i>
                     </button>
                     <div class="dropdown-menu" role="menu">
@@ -168,10 +204,10 @@
                       <a href="#" class="dropdown-item">View calendar</a>
                     </div>
                   </div>
-                  <button type="button" class="btn btn-success btn-sm" data-card-widget="collapse">
+                  <button type="button" class="btn btn-success1 btn-sm" data-card-widget="collapse">
                     <i class="fas fa-minus"></i>
                   </button>
-                  <button type="button" class="btn btn-success btn-sm" data-card-widget="remove">
+                  <button type="button" class="btn btn-success1 btn-sm" data-card-widget="remove">
                     <i class="fas fa-times"></i>
                   </button>
                 </div>
