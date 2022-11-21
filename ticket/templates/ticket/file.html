@@ -2,6 +2,13 @@
 {% block content %}
 {% load crispy_forms_tags %}
 {% load static %}
+
+<style>
+	.btn-success1, .btn-success1:hover, .thead-custom {
+		background-color: #103C14;
+		color: white;
+	}
+</style>
 <div class="container">
 	<center>
 	<form method="POST">
@@ -66,7 +73,7 @@
 					
 				</td>
 				<td>
-					<input type="submit" name="sb" class="form-control btn btn-success" value = "Submit">
+					<input type="submit" name="sb" class="form-control btn btn-success1" value = "Submit">
 				</td>
 			</tr>
 		</table>

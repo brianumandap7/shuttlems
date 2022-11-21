@@ -6,12 +6,21 @@
 	.bt-c {
 		width: 100px;
 	}
+
+	.btn-success1, .btn-success1:hover, .thead-custom {
+		background-color: #103C14;
+		color: white;
+	}
+
+	.btn-primary1 {
+		background-color: white;
+	}
 </style>
 <div class="container-fluid">
 	<center>
 	
 		<table class="table table-striped">
-			<thead class="thead-dark">
+			<thead class="thead-custom">
 				<th>Date of Travel</th>
 				<th>Time of Travel</th>
 				<th>Purpose</th>
@@ -42,12 +51,12 @@
 				</td>
 				
 				<td>
-					<a class="btn btn-success bt-c" onclick="window.open('/ticket/view_ticket/{{items.ticket_id}}','popupticket','width=950,height=600'); return false;">
+					<a class="btn btn-success1 bt-c" onclick="window.open('/ticket/view_ticket/{{items.ticket_id}}','popupticket','width=950,height=600'); return false;">
                              View
                           </a>
 				{% if items.ticket_status_id == 2 %}
 					
-						<a href="/media/{{items.qr_code}}" target = "_blank"class="btn btn-primary bt-c">QR Code</a>
+						<a href="/media/{{items.qr_code}}" target = "_blank"class="btn btn-primary1 bt-c">QR Code</a>
 					
 					
 				{% endif %}

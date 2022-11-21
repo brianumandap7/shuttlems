@@ -2,13 +2,21 @@
 {% block content %}
 {% load crispy_forms_tags %}
 {% load static %}
-
+<style>
+	.btn-success1, .btn-success1:hover, .thead-custom {
+    background-color: #103C14;
+    color: white;
+	}
+	.btn-primary1 {
+		background-color: white;
+	}
+</style>
 <section>
 	<div class="container-fluid">
 		<form method="POST">
 			{% csrf_token %}
 			<table class="table">
-				<thead>
+				<thead class="thead-custom">
 					<tr>
 						<th>Username</th>
 						<th>Full Name</th>
@@ -27,8 +35,8 @@
 						</td>
 
 						<td>
-							<a href="/ticket/add_role/{{items.id}}" class="btn btn-primary">Assign Role</a>
-							<a href="/ticket/assign_role/{{items.id}}" class="btn btn-success">Edit Role</a>
+							<a href="/ticket/add_role/{{items.id}}" class="btn btn-success1">Assign Role</a>
+							<a href="/ticket/assign_role/{{items.id}}" class="btn btn-primary1">Edit Role</a>
 						</td>
 
 					</tr>

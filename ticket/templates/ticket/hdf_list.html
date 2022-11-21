@@ -2,10 +2,17 @@
 {% block content %}
 {% load crispy_forms_tags %}
 {% load static %}
+
+<style>
+.btn-success1, .btn-success1:hover, .thead-custom {
+    background-color: #103C14;
+    color: white;
+  }
+</style>
 <section>
     <div class="container">
         <table class="table">
-          <thead class="thead-dark">
+          <thead class="thead-custom">
             <tr>
               <th scope="col">Participant</th>
               <th scope="col">Trip Ticket</th>
@@ -24,7 +31,7 @@
               Cleared
               {% endif %}  
               </td>
-              <td><a href="/ticket/view_ticket1/{{items.ticket_id}}" class="btn btn-info">View Ticket</a></td>
+              <td><a href="/ticket/view_ticket1/{{items.ticket_id}}" class="btn btn-success1">View Ticket</a></td>
             </tr>
             {% endfor %}
         </table>

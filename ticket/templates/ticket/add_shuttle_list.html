@@ -2,11 +2,19 @@
 {% block content %}
 {% load crispy_forms_tags %}
 {% load static %}
-
+<style>
+	.btn-success1, .btn-success1:hover, .thead-custom {
+    background-color: #103C14;
+    color: white;
+	}
+	.btn-primary1 {
+		background-color: white;
+	}
+</style>
 <section>
 	<div class="container-fluid">
 		<table class="table">
-			<thead class="thead-dark">
+			<thead class="thead-custom">
 				<tr>
 					<th>
 						Shuttle Name
@@ -40,7 +48,7 @@
 					</td>
 
 					<td>
-						<a href="/ticket/remove_shuttle/{{items.shuttle_service_list_id}}" class="btn btn-danger">Remove</a>
+						<a href="/ticket/remove_shuttle/{{items.shuttle_service_list_id}}" class="btn btn-warning">Remove</a>
 					</td>
 				</tr>
 				{% endfor %}
@@ -48,7 +56,7 @@
 
 		</table>
 
-		<button type="button" class="btn btn-primary ap" data-toggle="modal" data-target="#exampleModal">
+		<button type="button" class="btn btn-success1 ap" data-toggle="modal" data-target="#exampleModal">
 		  Manage Shuttle List
 		</button>
 
@@ -104,8 +112,8 @@
 		      		</table>	   
 		      </div>
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-		        <input type="submit" name="submit" class="btn btn-primary" value="Add List">
+		        <button type="button" class="btn btn-primary1" data-dismiss="modal">Close</button>
+		        <input type="submit" name="submit" class="btn btn-success1" value="Add List">
 		      </div>
 		    </div>
 		  </div>

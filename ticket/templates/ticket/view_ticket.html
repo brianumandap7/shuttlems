@@ -7,12 +7,17 @@
 	.ap {
 		float: right;
 	}
+
+	.btn-success1, .btn-success1:hover, .thead-custom {
+		background-color: #103C14;
+		color: white;
+	}
 </style>
 <div class="container-fluid">
 	<center>
 	
 		<table class="table table-striped">
-			<thead class="thead-dark">
+			<thead class="thead-custom">
 				<th>Date of Travel</th>
 				<th>Time of Travel</th>
 				<th>Destination</th>
@@ -58,7 +63,7 @@
 		{% if items.role_id == 9 %}
 		{% for i in ticket %}
 			{% if i.ticket_status_id == 1 or i.ticket_status_id == 2 %}
-			<button type="button" class="btn btn-primary ap" data-toggle="modal" data-target="#exampleModal">
+			<button type="button" class="btn btn-success1 ap" data-toggle="modal" data-target="#exampleModal">
 			  Add Participant
 			</button>
 			{% endif %}
@@ -68,7 +73,7 @@
 		{% if items.role_id == 10 %}
 		{% for i in ticket %}
 			{% if i.ticket_status_id == 1 or i.ticket_status_id == 2 %}
-		<button type="button" class="btn btn-primary ap" data-toggle="modal" data-target="#exampleModal">
+		<button type="button" class="btn btn-success1 ap" data-toggle="modal" data-target="#exampleModal">
 		  Add Participant
 		</button>
 			{% endif %}
@@ -83,7 +88,7 @@
 		  <div class="modal-dialog" role="document">
 		    <div class="modal-content">
 		      <div class="modal-header">
-		        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+		        <h5 class="modal-title" id="exampleModalLabel"></h5>
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 		          <span aria-hidden="true">&times;</span>
 		        </button>
@@ -97,8 +102,8 @@
 		      		 </select>		   
 		      </div>
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-		        <input type="submit" name="submit" class="btn btn-success" value="Add Participant">
+		        <button type="button" class="btn btn-primary1" data-dismiss="modal">Close</button>
+		        <input type="submit" name="submit" class="btn btn-success1" value="Add Participant">
 		      </div>
 		    </div>
 		  </div>

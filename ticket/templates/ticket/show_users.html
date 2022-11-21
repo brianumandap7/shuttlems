@@ -2,13 +2,21 @@
 {% block content %}
 {% load crispy_forms_tags %}
 {% load static %}
-
+<style>
+	.btn-success1, .btn-success1:hover, .thead-custom {
+    background-color: #103C14;
+    color: white;
+	}
+	.btn-primary1 {
+		background-color: white;
+	}
+</style>
 <section>
 	<div class="container-fluid">
 		<form method="POST">
 			{% csrf_token %}
 			<table class="table">
-				<thead>
+				<thead class="thead-custom">
 					<tr>
 						<th>Username</th>
 						<th>Full Name</th>
@@ -32,7 +40,7 @@
 						</td>
 
 						<td>
-							<a href="/ticket/edit_user/{{items.id}}" class="btn btn-warning">Edit User</a>
+							<a href="/ticket/edit_user/{{items.id}}" class="btn btn-success1">Edit User</a>
 						</td>
 
 					</tr>

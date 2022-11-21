@@ -2,11 +2,16 @@
 {% block content %}
 {% load crispy_forms_tags %}
 {% load static %}
-
+<style>
+	.btn-success1, .btn-success1:hover, .thead-custom {
+		background-color: #103C14;
+		color: white;
+	}
+</style>
 <section>
 	<div class="container-fluid">
 		<table class="table table-stripped">
-			<thead class="thead-dark">
+			<thead class="thead-custom">
 				<tr>
 					<th>Shuttle Name</th>
 					<th>Plate Number</th>
@@ -27,7 +32,7 @@
 						{{items.shuttle_name.driver_name}}
 					</td>
 					<td>
-						<a href="/ticket/route/{{items.shuttle_service_id}}" class="btn btn-success">Track</a>
+						<a href="/ticket/route/{{items.shuttle_service_id}}" class="btn btn-success1">Track</a>
 					</td>
 				</tr>
 				{% endfor %}
