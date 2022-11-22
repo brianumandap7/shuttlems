@@ -3,6 +3,12 @@
 {% load crispy_forms_tags %}
 {% load static %}
 
+<style>
+.btn-success1, .btn-success1:hover {
+    background-color: #103C14;
+    color: white;
+  }
+</style>
 <center>
 	<br>
 	<a href="/" class="mt-5 mb-5">
@@ -10,6 +16,6 @@
 	</a>
 
 	<h5 class="warning" style = "font-family:helvetica; color: #4F4F4F"><small><b>You've logged out from Shuttle Management System</b></small></h5>
-    	<a href = "/">Log-in to continue</a>      
+    	<a href = "/" class="btn btn-success1">Log-in to continue</a>      
 </center>
 {% endblock content %}

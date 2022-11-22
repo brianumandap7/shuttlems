@@ -28,7 +28,7 @@
         {% for i in mtx %}
             {% for items in part %}
             {% if items.ticket.start_date|date:"Y-m-d" == today %}
-            <div class="alert alert-danger alert-dismissable" role = "alert"><strong>You have a travel today!</strong> Make sure to accomplish the Health Declaration Form before the trip. Thank you so much. &nbsp;&nbsp;
+            <div class="alert alert-warning alert-dismissable" role = "alert"><strong>You have a travel today!</strong> Make sure to accomplish the Health Declaration Form before the trip. Thank you so much. &nbsp;&nbsp;
 
               <a href = "#" onclick="window.open('/ticket/view_ticket/{{i.ticket_id}}','popupticket','width=950,height=600'); return false;" class="btn btn-light vt">View Trip Details</a>
               &nbsp;&nbsp;&nbsp;

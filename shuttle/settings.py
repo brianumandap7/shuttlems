@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'easy_maps',
 
+    'bulk_user_upload',
+
     'tracing.apps.TracingConfig',
     'ticket.apps.TicketConfig',
     'login.apps.LoginConfig',
@@ -146,6 +148,8 @@ EASY_MAPS_GOOGLE_KEY = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ___0123456789'
 EASY_MAPS_CENTER = (-41.3, 32)
 EASY_MAPS_ZOOM = 8
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
+X_FRAME_OPTIONS = 'http://127.0.0.1:8000/ticket/calendar/'
 
 
 

@@ -6,7 +6,6 @@ from io import BytesIO
 from django.core.files import File
 from PIL import Image, ImageDraw
 
-
 class Roles(models.Model):
 	role_id = models.AutoField(primary_key=True)
 	role = models.CharField(max_length=255, blank=True, null = True)

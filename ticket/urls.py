@@ -5,6 +5,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.contrib.auth.decorators import login_required
+from django.conf.urls import url
 
 app_name = 'ticket'
 
@@ -51,6 +52,7 @@ urlpatterns = [
     path('edit_driver/<int:tag>', login_required(views.edit_driver), name='edit_driver'),
     path('delete_driver/<int:tag>', login_required(views.delete_driver), name='delete_driver'),
     path('remove_shuttle/<int:tag>', login_required(views.remove_shuttle), name='remove_shuttle'),
+    url(r'^calendar/$', views.CalendarView.as_view(), name='calendar'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
