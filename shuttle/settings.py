@@ -43,8 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms',
     'easy_maps',
-
-    'bulk_user_upload',
+    'import_export',
 
     'tracing.apps.TracingConfig',
     'ticket.apps.TicketConfig',
@@ -149,7 +148,6 @@ EASY_MAPS_CENTER = (-41.3, 32)
 EASY_MAPS_ZOOM = 8
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
-X_FRAME_OPTIONS = 'http://127.0.0.1:8000/ticket/calendar/'
 
 
 

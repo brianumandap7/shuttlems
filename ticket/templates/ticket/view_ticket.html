@@ -18,6 +18,7 @@
 	
 		<table class="table table-striped">
 			<thead class="thead-custom">
+				<th>Ticket ID</th>
 				<th>Date of Travel</th>
 				<th>Time of Travel</th>
 				<th>Destination</th>
@@ -28,6 +29,9 @@
 			</thead>
 			{% for items in ticket %}
 			<tr>
+				<td>
+					{{items.ticket_id}}
+				</td>
 				<td>
 					{{items.start_date}}
 				</td>

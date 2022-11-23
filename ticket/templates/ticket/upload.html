@@ -1,0 +1,34 @@
+{% extends 'ticket/popupbase.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+<section>
+	<div class="container-fluid">
+		<form method="POST" enctype="multipart/form-data">
+			{% csrf_token %}
+			<table class="table">
+				<tbody>
+					<tr>
+						<td>
+							Bulk Upload Users
+						</td>
+						<td>
+							<input type="file" name="myfile" required>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="submit" name="submit" value="Bulk Upload" class="btn btn-warning">
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			
+			
+		</form>
+	</div>
+</section>
+
+{% endblock content %}

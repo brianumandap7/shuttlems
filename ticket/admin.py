@@ -2,7 +2,9 @@ from django.contrib import admin
 
 from .models import Status, Tickets, Stations, shuttle, destination, current_loc, imhere, tracing, answers, questions, hdf, reserve, Ticket_status, participants, shuttle_service, shuttle_driver, shuttle_service_list, shuttle_ride
 
-# Register your models here.
+from import_export.admin import ImportExportModelAdmin
+from django.contrib.auth.models import User
+
 
 admin.site.register(Tickets)
 admin.site.register(shuttle)

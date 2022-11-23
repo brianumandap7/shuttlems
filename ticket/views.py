@@ -13,6 +13,32 @@ from django.utils.safestring import mark_safe
 from .utils import Calendar
 from datetime import timedelta
 from django.views.decorators.clickjacking import xframe_options_exempt
+from .resources import PersonResource
+from django.contrib import messages
+from tablib import Dataset
+
+def simple_upload(request):
+	if request.method == 'POST':
+		person_resource = PersonResource()
+		dataset = Dataset()
+		new_person = request.FILES['myfile']
+
+		if not new_person.name.endswith('xlsx'):
+			messages.info(request, 'wrong file format')
+			return render (request, 'ticket/upload.html')
+
+		imported_data = dataset.load(new_person.read(),format = 'xlsx')
+		for data in imported_data:
+			db = User()
+			db.username = data[1]
+			pw = data[2]
+			db.set_password(pw)
+			db.email = data[3]
+			db.first_name = data[4]
+			db.last_name = data[5]
+			db.is_staff = data[6]
+			db.save()
+	return render(request, 'ticket/upload.html')	
 
 class CalendarView(generic.ListView):
     model = Tickets
