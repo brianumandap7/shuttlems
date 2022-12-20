@@ -2,9 +2,11 @@ from django.contrib import admin
 
 from .models import Status, Tickets, Stations, shuttle, destination, current_loc, imhere, tracing, answers, questions, hdf, reserve, Ticket_status, participants, shuttle_service, shuttle_driver, shuttle_service_list, shuttle_ride
 
-from import_export.admin import ImportExportModelAdmin
+from import_export.admin import ImportExportModelAdmin, ExportActionMixin
 from django.contrib.auth.models import User
 
+class sadmin(ExportActionMixin, admin.ModelAdmin):
+    pass
 
 admin.site.register(Tickets)
 admin.site.register(shuttle)
@@ -19,4 +21,4 @@ admin.site.register(participants)
 admin.site.register(shuttle_service)
 admin.site.register(shuttle_service_list)
 admin.site.register(shuttle_driver)
-admin.site.register(shuttle_ride)
+admin.site.register(shuttle_ride, sadmin)

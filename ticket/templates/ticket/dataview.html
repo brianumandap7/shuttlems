@@ -1,0 +1,24 @@
+{% extends 'ticket/popupbase.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+<div class="container">
+	<div class="small-box bg-warning1">
+	  <div class="inner">
+	    <h3>{{hm}}
+	      
+
+	    </h3>
+
+	    <p>This Month's Ridership</p>
+	  </div>
+	  <div class="icon">
+	    <i class="ion ion-android-bus"></i>
+	  </div>
+	  
+	</div>
+	<a href="/ticket/datav" class="btn btn-info">Go Back</a>
+</div>
+
+{% endblock content %}

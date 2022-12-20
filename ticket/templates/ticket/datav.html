@@ -20,6 +20,35 @@
 		    </div>
 		</div>
 
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-xs-12">
+        <table class="table table-stripped">
+          <thead class="thead-custom">
+            <tr>
+              
+              <th>Shuttle Name</th>
+              <th>No. of Passengers this Month</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for items in ss %}
+            <tr>
+              
+
+              <td>
+                {{items.shuttle_name.shuttle_name}}
+              </td>
+              <td>
+                <a href="/ticket/dataview/{{items.shuttle_service_id}}" class="btn btn-info">View Ridership</a>
+              </td>
+             
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
 	</div>
 </section>
 

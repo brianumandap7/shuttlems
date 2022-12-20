@@ -13,6 +13,9 @@
 	.btn-primary1 {
 		background-color: white;
 	}
+	.btn-custom {
+		background-color: gray;
+	}
 </style>
 <div class="container-fluid">
 	<center>
@@ -66,7 +69,7 @@
 				{% if items.ticket_status_id == 1 %}
 					
 						<a href="/ticket/a/{{items.ticket_id}}" class="btn btn-warning bt-c">Approve</a><br>
-						<a href="/ticket/d/{{items.ticket_id}}" class="btn btn-danger bt-c">Disapprove</a>
+						<a href="/ticket/d/{{items.ticket_id}}" class="btn btn-custom bt-c">Disapprove</a>
 					
 					<!-- Button trigger modal -->
 					

@@ -284,9 +284,9 @@ def cw(request):
 
 	return render(request, 'ticket/cw.html', query)
 
-def iscan(request):
+def iscan(request, sn = 0):
 	query = {
-	
+		'sn': sn,
 	}
 
 	return render(request, 'ticket/iscan.html', query)
@@ -407,17 +407,18 @@ def add_driver(request):
 
 	return render(request, 'ticket/add_driver.html', query)
 
-def iscancon(request, con = ''):
+def iscancon(request, con = '', sn = 0):
 	query = {
 		'con': con,
-		'exec': shuttle_ride.objects.create(shuttle_ride_log = con)
+		'sn': sn,
+		'exec': shuttle_ride.objects.create(shuttle_ride_log = con, shuttle_service_id = sn)
 	}
 
 	return render(request, 'ticket/iscancon.html', query)
 
 def datav(request):
 	query = {
-
+		'ss': shuttle_service.objects.all(),
 	}
 	now = tz.now()
 	query['now'] = now
@@ -468,6 +469,17 @@ def datav(request):
 	query['female'] = json.dumps(query['f'])
 
 	return render(request, 'ticket/datav.html', query)
+
+def dataview(request, tag = 0):
+	query = {
+		'tag': tag,
+	}
+	today = datetime.date.today()
+
+	query['month'] = str(today.month)
+	query['hm'] = shuttle_ride.objects.filter(Q(shuttle_ride_date__month = str(today.month))&Q(shuttle_service_id = tag)).count()
+
+	return render(request, 'ticket/dataview.html', query)
 
 def add_users(request):
 	query = {
@@ -607,6 +619,14 @@ def remove_shuttle(request, tag = 0):
 	}
 
 	return render(request, 'ticket/remove_shuttle.html', query)
+
+def iscanmenu(request):
+	query = {
+		'ss': shuttle_service.objects.all(),
+		'slist': shuttle_service_list.objects.all(),
+	}
+
+	return render(request, 'ticket/iscanmenu.html', query)
 
 
 

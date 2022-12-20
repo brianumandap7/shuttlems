@@ -2,10 +2,17 @@
 {% block content %}
 {% load crispy_forms_tags %}
 {% load static %}
-
+<style>
+	.btn-success1, .btn-success1:hover {
+		background-color: #103C14;
+		color: white;
+	}
+</style>
 
 	<section>
 		<div class="container-fluid">
+
+			{% for it in a %}
 			<form method="POST">
 				{% csrf_token %}
 				<table class="table">
@@ -76,6 +83,12 @@
 					</tbody>
 				</table>
 			</form>
+
+			{% empty %}
+			<p>The user has no assigned role yet.</p>
+			<a href="/ticket/assign" class="btn btn-success1">Go Back</a>
+
+			{% endfor %}
 		</div>
 	</section>
 {% endblock content %}

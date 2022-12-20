@@ -10,6 +10,14 @@
 	.btn-primary1 {
 		background-color: white;
 	}
+	.btn-white {
+		background-color: white;
+		color: black;
+	}
+
+	.btn-gray {
+		background-color: gray;
+	}
 </style>
 <section>
 	<div class="container-fluid">
@@ -21,6 +29,7 @@
 						<th>Username</th>
 						<th>Full Name</th>
 						<th>Email Address</th>
+						<th>Status</th>
 						<th>Actions</th>
 					</tr>
 				</thead>
@@ -37,6 +46,18 @@
 
 						<td>
 							{{items.email}}
+						</td>
+
+						<td>
+							
+							{% if items.is_active == True %}
+							<small class="badge badge-warning"><i class="far fa-user"></i>Active User</small>
+							
+
+							{% else %}
+							<small class="badge badge-secondary"><i class="far fa-user"></i>Inactive User</small>
+							
+							{% endif %}
 						</td>
 
 						<td>

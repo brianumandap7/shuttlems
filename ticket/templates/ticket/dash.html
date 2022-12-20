@@ -20,6 +20,11 @@
 .imgs {
     width: auto;
 }
+
+.btn-success1, .btn-success1:hover {
+	background-color: #103C14;
+	color: white;
+}
 </style>
 {% if request.user.is_superuser %}
 <script>
@@ -47,6 +52,17 @@
 
     </script>
 	{% endif %}
+
+	{% empty %}
+
+	<div class="container-fluid">
+		<center>
+			<p><strong>You have no role assigned yet. <i>Please contact the SMS Administrator. </i></strong><a href="/logout/" class="btn btn-success1">Logout</a></p>
+		</center>
+	</div>
+
+	
+
 {% endfor %}
 
 {% endblock content %}

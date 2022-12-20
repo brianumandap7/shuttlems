@@ -7,6 +7,7 @@ from PIL import Image, ImageDraw
 from django.utils import timezone
 from login.models import Roles, Author
 
+
 # Create your models here.
 
 class Status(models.Model):        
@@ -244,7 +245,7 @@ class shuttle_ride(models.Model):
     shuttle_ride_id = models.AutoField(primary_key=True)
     shuttle_ride_log = models.CharField(max_length=255, blank=True, null = True)
     shuttle_ride_date = models.DateTimeField(auto_now_add=True)
-    shuttle_user = models.ForeignKey(Author, null=True, blank=True, on_delete=models.CASCADE)
+    shuttle_service_id = models.IntegerField(blank = True, null = True)
     
     def __str__(self):
         return str(self.shuttle_ride_log)+" "+str(self.shuttle_ride_date)

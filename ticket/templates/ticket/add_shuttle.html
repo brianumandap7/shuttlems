@@ -16,6 +16,7 @@
 		<table class="table table-stripped">
 			<thead class="thead-custom">
 				<tr>
+					<th>ID</th>
 					<th>Shuttle Name</th>
 					<th>Plate Number</th>
 					<th>Driver</th>
@@ -26,6 +27,10 @@
 			<tbody>
 				{% for items in ss %}
 				<tr>
+					<td>
+						{{items.shuttle_service_id}}
+					</td>
+
 					<td>
 						{{items.shuttle_name.shuttle_name}}
 					</td>

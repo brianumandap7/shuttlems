@@ -29,7 +29,7 @@ urlpatterns = [
     path('a/<int:tag>', login_required(views.a), name='a'),
     path('d/<int:tag>', login_required(views.d), name='d'),
     path('cw/', login_required(views.cw), name='cw'),
-    path('iscan/', views.iscan, name='iscan'),
+    path('iscan/<int:sn>', views.iscan, name='iscan'),
     path('hdf_list/', login_required(views.hdf_list), name='hdf_list'),
     path('route/<int:tag>', login_required(views.route), name='route'),
     path('add_shuttle/', login_required(views.add_shuttle), name='add_shuttle'),
@@ -40,7 +40,7 @@ urlpatterns = [
     path('profile/', login_required(views.profile), name='profile'),
     path('add_shuttle_list/', login_required(views.add_shuttle_list), name='add_shuttle_list'),
     path('add_driver/', login_required(views.add_driver), name='add_driver'),
-    path('iscan/<str:con>', login_required(views.iscancon), name='iscancon'),
+    path('iscan/<str:con>/<int:sn>', views.iscancon, name='iscancon'),
     path('datav/', login_required(views.datav), name='iscancon'),
     path('add_users/', login_required(views.add_users), name='add_users'),
     path('assign/', login_required(views.assign), name='assign'),
@@ -53,7 +53,9 @@ urlpatterns = [
     path('delete_driver/<int:tag>', login_required(views.delete_driver), name='delete_driver'),
     path('remove_shuttle/<int:tag>', login_required(views.remove_shuttle), name='remove_shuttle'),
     path('calendar/', login_required(views.CalendarView.as_view()), name='calendar'),
-    path('simple_upload', login_required(views.simple_upload), name = 'simple_upload')
+    path('simple_upload', login_required(views.simple_upload), name = 'simple_upload'),
+    path('iscan/', views.iscanmenu, name='iscanmenu'),
+    path('dataview/<int:tag>', login_required(views.dataview), name='dataview'),
 
 ]
 

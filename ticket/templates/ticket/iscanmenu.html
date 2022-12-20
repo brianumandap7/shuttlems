@@ -1,0 +1,58 @@
+{% extends 'ticket/popupbase.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load static %}
+<style>
+	.btn-success1, .btn-success1:hover, .thead-custom {
+    background-color: #103C14;
+    color: white;
+	}
+	.btn-primary1 {
+		background-color: white;
+	}
+</style>
+<section>
+	<div class="container-fluid">
+		<table class="table table-stripped">
+			<thead class="thead-custom">
+				<tr>
+					<th>ID</th>
+					<th>Shuttle Name</th>
+					<th>Plate Number</th>
+					<th>Driver</th>
+					<th>GPS Link</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for items in ss %}
+				<tr>
+					<td>
+						{{items.shuttle_service_id}}
+					</td>
+
+					<td>
+						{{items.shuttle_name.shuttle_name}}
+					</td>
+					<td>
+						{{items.shuttle_name.plate_number}}
+					</td>
+					<td>
+						{{items.shuttle_name.driver_name}}
+					</td>
+					<td>
+						<a href="#">{{items.gps_link}}</a>
+					</td>
+					<td>
+						<a href="/ticket/iscan/{{items.shuttle_service_id}}" class="btn btn-warning">Proceed</a>
+					</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		
+		<!-- end of add -->
+	</div>
+</section>
+{% endblock content %}
