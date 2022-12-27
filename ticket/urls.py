@@ -56,6 +56,7 @@ urlpatterns = [
     path('simple_upload', login_required(views.simple_upload), name = 'simple_upload'),
     path('iscan/', views.iscanmenu, name='iscanmenu'),
     path('dataview/<int:tag>', login_required(views.dataview), name='dataview'),
+    path('dataview/<int:tag>/<int:se>/<str:sd>/<str:ed>', login_required(views.dataview1), name='dataview1'),
 
 ]
 

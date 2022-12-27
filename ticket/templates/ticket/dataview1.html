@@ -1,0 +1,32 @@
+{% extends 'ticket/popupbase.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+<style>
+	.se {
+		width: 200px;
+	}
+</style>
+<div class="container">
+	<div class="small-box bg-warning1">
+	  <div class="inner">
+	    <h3>{{se}}
+	      
+
+	    </h3>
+
+	    <p>Ridership from <b>{{sd}}</b> to <b>{{ed}}</b> of <b>{% for items in sh %}{{items.shuttle_name}}{% endfor %}</b></p>
+	  </div>
+	  <div class="icon">
+	    <i class="ion ion-android-bus"></i>
+	  </div>
+	  
+	</div>
+	
+	
+	<a href="/ticket/dataview/{{tag}}" class="btn btn-info">Go Back</a>
+	
+</div>
+
+{% endblock content %}

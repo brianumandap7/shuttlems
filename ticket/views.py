@@ -479,6 +479,16 @@ def dataview(request, tag = 0):
 	query['month'] = str(today.month)
 	query['day'] = str(today.day)
 
+	if request.method == "POST":
+		start_date = request.POST.get('s')
+		end_date = request.POST.get('e')
+
+		se = shuttle_ride.objects.filter(Q(shuttle_ride_date__range=[start_date, end_date])&Q(shuttle_service_id = tag)).count()
+
+		return HttpResponseRedirect('/ticket/dataview/'+str(tag)+'/'+str(se)+'/'+str(start_date)+'/'+str(end_date))
+
+
+
 	query['d1'] = shuttle_ride.objects.filter(Q(shuttle_ride_date__month = str(today.month))&Q(shuttle_ride_date__day = str(1))&Q(shuttle_service_id = tag)).count()
 	query['d2'] = shuttle_ride.objects.filter(Q(shuttle_ride_date__month = str(today.month))&Q(shuttle_ride_date__day = str(2))&Q(shuttle_service_id = tag)).count()
 	query['d3'] = shuttle_ride.objects.filter(Q(shuttle_ride_date__month = str(today.month))&Q(shuttle_ride_date__day = str(3))&Q(shuttle_service_id = tag)).count()
@@ -514,6 +524,17 @@ def dataview(request, tag = 0):
 
 	return render(request, 'ticket/dataview.html', query)
 
+def dataview1(request, tag = 0, se = 0, sd = "", ed = ""):
+	query = {
+		'tag': tag,
+		'se': se,
+		'sd': sd,
+		'ed': ed,
+
+		'sh': shuttle_service_list.objects.filter(shuttle_service_list_id = tag),
+	}
+
+	return render(request, 'ticket/dataview1.html', query)
 def add_users(request):
 	query = {
 

@@ -3,6 +3,11 @@
 {% load crispy_forms_tags %}
 {% load static %}
 
+<style>
+	.se {
+		width: 200px;
+	}
+</style>
 <div class="container">
 	<div class="small-box bg-warning1">
 	  <div class="inner">
@@ -18,290 +23,22 @@
 	  </div>
 	  
 	</div>
+	
+	<form method="POST">
+		{% csrf_token %}
 
-	<table class="table">
-		<tbody>
-			<tr>
-				<td>
-					1
-				</td>
-				<td>
-					{{d1}}
-				</td>
-			</tr>
+		Start Date: &nbsp;<input type="date" name="s" required class="form-control se">
 
-			<tr>
-				<td>
-					2
-				</td>
-				<td>
-					{{d2}}
-				</td>
-			</tr>
+		End Date: &nbsp;<input type="date" name="e" required class="form-control se">
+		<br>
+		<input type="submit" name="squery" value="Filter" class="btn btn-success">
 
-			<tr>
-				<td>
-					3
-				</td>
-				<td>
-					{{d3}}
-				</td>
-			</tr>
+	</form>
 
-			<tr>
-				<td>
-					4
-				</td>
-				<td>
-					{{d4}}
-				</td>
-			</tr>
-
-			<tr>
-				<td>
-					5
-				</td>
-				<td>
-					{{d5}}
-				</td>
-			</tr>
-
-			<tr>
-				<td>
-					6
-				</td>
-				<td>
-					{{d6}}
-				</td>
-			</tr>
-
-			<tr>
-				<td>
-					7
-				</td>
-				<td>
-					{{d7}}
-				</td>
-			</tr>
-
-			<tr>
-				<td>
-					8
-				</td>
-				<td>
-					{{d8}}
-				</td>
-			</tr>
-
-			<tr>
-				<td>
-					9
-				</td>
-				<td>
-					{{d9}}
-				</td>
-			</tr>
-
-			<tr>
-				<td>
-					10
-				</td>
-				<td>
-					{{d10}}
-				</td>
-			</tr>
-
-			<tr>
-				<td>
-					11
-				</td>
-				<td>
-					{{d11}}
-				</td>
-			</tr>
-
-			<tr>
-				<td>
-					12
-				</td>
-				<td>
-					{{d12}}
-				</td>
-			</tr>
-
-			<tr>
-				<td>
-					13
-				</td>
-				<td>
-					{{d13}}
-				</td>
-			</tr>
-
-			<tr>
-				<td>
-					14
-				</td>
-				<td>
-					{{d14}}
-				</td>
-			</tr>
-
-			<tr>
-				<td>
-					15
-				</td>
-				<td>
-					{{d15}}
-				</td>
-			</tr>
-			<tr>
-				<td>
-					16
-				</td>
-				<td>
-					{{d16}}
-				</td>
-			</tr>
-
-			<tr>
-				<td>
-					17
-				</td>
-				<td>
-					{{d17}}
-				</td>
-			</tr>
-
-			<tr>
-				<td>
-					18
-				</td>
-				<td>
-					{{d18}}
-				</td>
-			</tr>
-
-			<tr>
-				<td>
-					19
-				</td>
-				<td>
-					{{d19}}
-				</td>
-			</tr>
-
-			<tr>
-				<td>
-					20
-				</td>
-				<td>
-					{{d20}}
-				</td>
-			</tr>
-
-			<tr>
-				<td>
-					21
-				</td>
-				<td>
-					{{d21}}
-				</td>
-			</tr>
-
-			<tr>
-				<td>
-					22
-				</td>
-				<td>
-					{{d22}}
-				</td>
-			</tr>
-
-			<tr>
-				<td>
-					23
-				</td>
-				<td>
-					{{d23}}
-				</td>
-			</tr>
-
-			<tr>
-				<td>
-					24
-				</td>
-				<td>
-					{{d24}}
-				</td>
-			</tr>
-
-			<tr>
-				<td>
-					25
-				</td>
-				<td>
-					{{d25}}
-				</td>
-			</tr>
-
-			<tr>
-				<td>
-					26
-				</td>
-				<td>
-					{{d26}}
-				</td>
-			</tr>
-
-			<tr>
-				<td>
-					27
-				</td>
-				<td>
-					{{d27}}
-				</td>
-			</tr>
-
-			<tr>
-				<td>
-					28
-				</td>
-				<td>
-					{{d28}}
-				</td>
-			</tr>
-
-			<tr>
-				<td>
-					29
-				</td>
-				<td>
-					{{d29}}
-				</td>
-			</tr>
-
-			<tr>
-				<td>
-					30
-				</td>
-				<td>
-					{{d30}}
-				</td>
-			</tr>
-
-			<tr>
-				<td>
-					31
-				</td>
-				<td>
-					{{d31}}
-				</td>
-			</tr>
-		</tbody>
-		
-	</table>
+	<br>
+	<br>
 	<a href="/ticket/datav" class="btn btn-info">Go Back</a>
+	
 </div>
 
 {% endblock content %}
